@@ -8,7 +8,7 @@ class AgendaForm(forms.ModelForm):
 
         # Customização de widgets para os campos de data e hora
         widgets = {
-            'data': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'data': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
             'hora': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'rows': 8, 'cols': 40, 'class': 'form-control', 'placeholder': 'Exemplo:\n Treino A - Peito:\n - Supino Inclinado 4X10\n - Crucifixo Inclinado 4X10\n - Supino Reto 4X10'}),
         }
@@ -19,7 +19,7 @@ class AgendaForm(forms.ModelForm):
             'aluno': 'Nome do Aluno(a)',
             'valor': 'Valor do Treino',
             'data': 'Data do Treino',
-            'hora': 'Hora do Treino',
+            'hora': 'Horário do Treino',
             'descricao': 'Descrição do Treino',
         }
 

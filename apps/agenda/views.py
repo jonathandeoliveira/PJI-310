@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Agenda
 from .forms import AgendaForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -23,3 +24,18 @@ def cadastrar_agenda(request):
 def listar_agendas(request):
     agendas = Agenda.objects.all()  
     return render(request, "agenda/listar_agendas.html", {'agendas': agendas})
+
+# View para edita agenda
+
+
+def editar_agenda(request, agenda_id):
+    agenda = get_object_or_404(Agenda, id=agenda_id)
+    form = AgendaForm(request.POST or None, instance=agenda)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Treino editado com sucesso!')
+            return redirect('listar_agendas')
+    return render(request, 'agenda/editar_agenda.html', {'form': form, 'agenda': agenda})
+    
