@@ -6,8 +6,7 @@ from .models import UserProfile
 class UserProfileCreationForm(UserCreationForm):
     class Meta:
         model = UserProfile
-        fields = ['username', 'email', 'document',
-                  'postal_code', 'phone', 'birth_date', 'full_address']
+        fields = ['username', 'email', 'document', 'postal_code', 'phone', 'birth_date', 'full_address']
         widgets = {
             'birth_date': forms.DateInput(attrs={'type': 'date'}),
         }

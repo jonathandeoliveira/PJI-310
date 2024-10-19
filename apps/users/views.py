@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from .forms import UserProfileCreationForm
+from apps.users.forms import UserProfileCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -14,7 +14,7 @@ def register(request):
             user = form.save()
             login(request, user)  # Faz login automático após o cadastro
             # Redireciona para a página inicial ou outra de sua escolha
-            return redirect('home')
+            return redirect('index')
     else:
         form = UserProfileCreationForm()
 
