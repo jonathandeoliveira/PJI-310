@@ -1,5 +1,6 @@
 from django import forms
 from .models import Agenda
+from django.utils import timezone
 
 class AgendaForm(forms.ModelForm):
     class Meta:
@@ -10,7 +11,10 @@ class AgendaForm(forms.ModelForm):
         widgets = {
             'data': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
             'hora': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
-            'descricao': forms.Textarea(attrs={'rows': 8, 'cols': 40, 'class': 'form-control', 'placeholder': 'Exemplo:\n Treino A - Peito:\n - Supino Inclinado 4X10\n - Crucifixo Inclinado 4X10\n - Supino Reto 4X10'}),
+            'descricao': forms.Textarea(attrs={
+                'rows': 8, 'cols': 40, 'class': 'form-control',
+                'placeholder': 'Exemplo:\n Treino A - Peito:\n - Supino Inclinado 4X10\n - Crucifixo Inclinado 4X10\n - Supino Reto 4X10'
+            }),
         }
 
         # Personaliza os rótulos dos campos do formulário
@@ -50,5 +54,13 @@ class AgendaForm(forms.ModelForm):
     def clean_valor(self):
         valor = self.cleaned_data.get('valor')
         if valor <= 0:
-            raise forms.ValidationError('O valor da aula deve ser maior que zero.')
+            raise forms.ValidationError(
+                'O valor da aula deve ser maior que zero.')
         return valor
+
+    # Validação customizada para garantir que a data não seja no passado
+    def clean_data(self):
+        data = self.cleaned_data.get('data')
+        if data and data < timezone.now().date():
+            raise forms.ValidationError('A data do treino não pode ser no passado.')
+        return data

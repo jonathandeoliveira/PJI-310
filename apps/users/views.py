@@ -5,6 +5,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from django.contrib.auth.views import LoginView
+from .forms import UserProfileLoginForm
+from django.urls import reverse_lazy
+
 # Create your views here.
 
 def register(request):
@@ -21,3 +25,10 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
+class CustomLoginView(LoginView):
+    form_class = UserProfileLoginForm
+    template_name = 'users/login.html'
+
+    def get_success_url(self):
+        # Redireciona para o nome da URL 'index' após o login
+        return reverse_lazy('index')

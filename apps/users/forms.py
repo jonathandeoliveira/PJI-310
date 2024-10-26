@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import UserProfile
 
 
@@ -10,13 +10,13 @@ class UserProfileCreationForm(UserCreationForm):
                   'postal_code', 'phone', 'birth_date', 'full_address']
 
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Ex.: joaosilva', 'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'seuemail@exemplo.com', 'class': 'form-control'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Ex.: Joaosilva', 'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Joaosilva@exemplo.com', 'class': 'form-control'}),
             'document': forms.TextInput(attrs={'placeholder': 'Digite seu CPF (somente números)', 'class': 'form-control'}),
             'postal_code': forms.TextInput(attrs={'placeholder': 'Digite seu CEP (somente números)', 'class': 'form-control'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Digite seu telefone com DDD', 'class': 'form-control'}),
             'birth_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
-            'full_address': forms.TextInput(attrs={'placeholder': 'Rua, número, bairro, cidade, estado', 'class': 'form-control'}),
+            'full_address': forms.TextInput(attrs={'placeholder': 'Rua, Número, Bairro, Cidade, Estado', 'class': 'form-control'}),
         }
 
         labels = {
@@ -57,3 +57,16 @@ class UserProfileCreationForm(UserCreationForm):
             raise forms.ValidationError(
                 "O telefone deve ter exatamente 11 dígitos, incluindo o DDD.")
         return phone
+
+
+class UserProfileLoginForm(AuthenticationForm):
+    username = forms.CharField(
+        label="E-mail",
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Digite seu E-mail'})
+    )
+    password = forms.CharField(
+        label="Senha",
+        widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'Senha'})
+    )
