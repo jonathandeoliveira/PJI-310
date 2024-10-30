@@ -4,13 +4,11 @@ from apps.users.forms import UserProfileCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
 from django.contrib.auth.views import LoginView
 from .forms import UserProfileLoginForm
 from django.urls import reverse_lazy
 
 # Create your views here.
-
 def register(request):
     if request.method == 'POST':
         form = UserProfileCreationForm(request.POST)
@@ -21,7 +19,6 @@ def register(request):
             return redirect('index')
     else:
         form = UserProfileCreationForm()
-
     return render(request, 'users/register.html', {'form': form})
 
 

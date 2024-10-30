@@ -6,8 +6,18 @@ from .models import UserProfile
 class UserProfileCreationForm(UserCreationForm):
     class Meta:
         model = UserProfile
-        fields = ['username', 'email', 'document',
-                  'postal_code', 'phone', 'birth_date', 'full_address']
+        fields = [
+            'username',
+            'email',
+            'document',
+            'postal_code',
+            'phone',
+            'birth_date',
+            'full_address',
+            'is_professor',
+            'area_atuacao',
+            
+        ]
 
         widgets = {
             'username': forms.TextInput(attrs={'placeholder': 'Ex.: Joaosilva', 'class': 'form-control'}),
@@ -17,6 +27,9 @@ class UserProfileCreationForm(UserCreationForm):
             'phone': forms.TextInput(attrs={'placeholder': 'Digite seu telefone com DDD', 'class': 'form-control'}),
             'birth_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'full_address': forms.TextInput(attrs={'placeholder': 'Rua, Número, Bairro, Cidade, Estado', 'class': 'form-control'}),
+            'is_professor': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'area_atuacao': forms.TextInput(attrs={'placeholder': 'Área de Atuação do Professor', 'class': 'form-control'}),
+            
         }
 
         labels = {
@@ -27,6 +40,8 @@ class UserProfileCreationForm(UserCreationForm):
             'phone': 'Telefone',
             'birth_date': 'Data de Nascimento',
             'full_address': 'Endereço Completo',
+            'area_atuacao': 'Área de Atuação',
+            'is_professor': 'É Professor?',
         }
 
     def clean_email(self):
