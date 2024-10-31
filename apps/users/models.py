@@ -19,9 +19,6 @@ class UserProfile(AbstractUser):
     # Campos específicos para professores
     # Define se o usuário é um professor
     is_professor = models.BooleanField(default=False)
-    # Campo de especialidade do professor
-    area_atuacao = models.CharField(max_length=50, blank=True, null=True)
-  
 
     # Campos de permissões e grupos
     groups = models.ManyToManyField(Group, related_name='userprofile_groups', blank=True)
@@ -36,3 +33,4 @@ class UserProfile(AbstractUser):
     class Meta:
         verbose_name = "User Profile"
         verbose_name_plural = "User Profiles"
+

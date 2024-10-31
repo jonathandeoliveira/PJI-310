@@ -1,6 +1,9 @@
 from django import forms
 from .models import Agenda
+from apps.users.models import UserProfile
 from django.utils import timezone
+from django.core.exceptions import ValidationError
+
 
 class AgendaForm(forms.ModelForm):
     class Meta:
@@ -49,6 +52,16 @@ class AgendaForm(forms.ModelForm):
                 'required': 'A descrição do treino é obrigatória.',
             },
         }
+        
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # Filtra o campo 'professor' para exibir apenas os usuários com `is_professor=True`
+        self.fields['professor'].queryset = UserProfile.objects.filter(is_professor=True)
+        
+        # Filtra o campo 'aluno' para exibir apenas os usuários com `is_professor=False`
+        self.fields['aluno'].queryset = UserProfile.objects.filter(is_professor=False)
 
     # Validação customizada para garantir que o valor seja positivo
     def clean_valor(self):
@@ -64,3 +77,17 @@ class AgendaForm(forms.ModelForm):
         if data and data < timezone.now().date():
             raise forms.ValidationError('A data do treino não pode ser no passado.')
         return data
+
+    def clean_aluno_e_professor(self):
+        cleaned_data = super().clean()
+        professor = cleaned_data.get('professor')
+        aluno = cleaned_data.get('aluno')
+
+        # Valida se o professor realmente é um professor
+        if professor and not professor.is_professor:
+            raise ValidationError("O usuário atribuído como professor não é marcado como professor.")
+
+        # Valida se o aluno não é um professor (caso aluno seja uma ForeignKey para UserProfile)
+        if aluno and aluno.is_professor:
+            raise ValidationError("O usuário atribuído como aluno é marcado como professor.")
+        return cleaned_data

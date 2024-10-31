@@ -15,7 +15,6 @@ class UserProfileCreationForm(UserCreationForm):
             'birth_date',
             'full_address',
             'is_professor',
-            'area_atuacao',
             
         ]
 
@@ -28,7 +27,6 @@ class UserProfileCreationForm(UserCreationForm):
             'birth_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'full_address': forms.TextInput(attrs={'placeholder': 'Rua, Número, Bairro, Cidade, Estado', 'class': 'form-control'}),
             'is_professor': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'area_atuacao': forms.TextInput(attrs={'placeholder': 'Área de Atuação do Professor', 'class': 'form-control'}),
             
         }
 
@@ -40,7 +38,6 @@ class UserProfileCreationForm(UserCreationForm):
             'phone': 'Telefone',
             'birth_date': 'Data de Nascimento',
             'full_address': 'Endereço Completo',
-            'area_atuacao': 'Área de Atuação',
             'is_professor': 'É Professor?',
         }
 
