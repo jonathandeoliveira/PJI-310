@@ -1,0 +1,9 @@
+criar validação nas views para que o usuario só veja seus próprios treinos ok
+criar teste para a validação acima 
+
+criar método para disparo de email OU inserção de treino em agenda pessoal, para o email do usuario cadastrado
+
+criar acessibilidade com botão para alto contraste e aumento de letras
+testar funcionalidade acima (verificar como/se é possivel realizar este teste)
+
+analisar o pythonanywere.com para deploy

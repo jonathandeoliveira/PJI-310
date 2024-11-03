@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <title>Página Inicial</title>
-        <div class="container mt-5">
-            <h1>Bem-vindo ao Agenda Fácil</h1>
-            <p>Sistema de Agendamento de Treinos</p>
-            <p>Este sistema permite o gerenciamento de treinos entre professores e alunos.</p>
-            
-            <div class="mt-4">
-                <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
-                <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
-                <a href="{% url 'register' %}" class="btn btn-dark">Cadastrar Novo Usuário</a>
-            </div>
+{% extends 'shared/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Bem-vindo ao Agenda Fácil</h1>
+        <p>Olá, {{ user.username }}! Você está logado(a).</p>
+        <p>Sistema de Agendamento de Treinos</p>
+        <p>Este sistema permite o gerenciamento de treinos entre professores e alunos.</p>
+        <div class="mt-4">
+            <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
+            <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
+            <a href="{% url 'register' %}" class="btn btn-dark">Cadastrar Novo Usuário</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
         </div>
-    </body>
-</html>
+    </div>
+{% endblock %}
+

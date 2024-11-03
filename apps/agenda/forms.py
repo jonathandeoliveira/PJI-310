@@ -4,7 +4,6 @@ from apps.users.models import UserProfile
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 
-
 class AgendaForm(forms.ModelForm):
     class Meta:
         model = Agenda
