@@ -43,7 +43,7 @@
     <div>
       <img src="{% static 'images/logo.png' %}" alt="Logo">
       {% if user.is_authenticated %}
-        <span>Bem-vindo, {{ user.username }}  </span>
+        <span id='logado'>Bem-vindo, {{ user.username }}  </span>
         <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
         <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
         <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
@@ -55,7 +55,7 @@
       {% endif %}
     </div>
   </header>
-  
+
   <main>
       <div class="main-top">
       </div>

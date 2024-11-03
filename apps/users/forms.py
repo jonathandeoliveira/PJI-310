@@ -74,10 +74,10 @@ class UserProfileLoginForm(AuthenticationForm):
     username = forms.CharField(
         label="E-mail",
         widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Digite seu E-mail'})
+            attrs={'class': 'form-control', 'placeholder': 'Digite seu E-mail', 'id':'#email'})
     )
     password = forms.CharField(
         label="Senha",
         widget=forms.PasswordInput(
-            attrs={'class': 'form-control', 'placeholder': 'Senha'})
+            attrs={'class': 'form-control', 'placeholder': 'Senha', 'id':'#password'})
     )
