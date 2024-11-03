@@ -1,0 +1,35 @@
+criar validação nas views para que o usuario só veja seus próprios treinos ok
+criar teste para a validação acima ok 
+
+criar método para disparo de email OU inserção de treino em agenda pessoal, para o email do usuario cadastrado
+Microsoft Azure com problemas com a conta de estudante da univesp, tentar outra alternativa
+
+criar acessibilidade com botão para alto contraste e aumento de letras
+testar funcionalidade acima (verificar como/se é possivel realizar este teste)
+
+analisar o pythonanywere.com para deploy
+
+
+
+
+
+
+    username='professor123',
+    email='professor123@example.com',
+    password='p@ssword123',
+    cpf='12345678901',
+    cep='12345678',
+    telefone='(11) 91234-5678',
+    data_nascimento='1980-01-01',
+    endereco='Rua dos Professores, 123',
+    e_professor=True
+
+    username='aluno456',
+    email='aluno456@example.com',
+    password='p@ssword456',
+    cpf='45678901234',
+    cep='56789012',
+    telefone='(11) 98765-43217',
+    data_nascimento='2000-01-01',
+    endereco='Rua dos Alunos, 456',
+    e_professor=False
