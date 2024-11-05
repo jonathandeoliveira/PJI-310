@@ -4,96 +4,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-      // Tamanho de fonte padrão
-      let defaultFontSize = 16;
-
-      // Função para ajustar o tamanho da fonte
-      function adjustFontSize(change) {
-          const body = document.body;
-          const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
-          body.style.fontSize = `${currentSize + change}px`;
-      }
-
-      // Função para resetar o tamanho da fonte para o padrão
-      function resetFontSize() {
-          document.body.style.fontSize = `${defaultFontSize}px`;
-      }
-      </script>
-      <div id="font-controls">
-        <button onclick="adjustFontSize(1)">A+</button> <!-- Aumenta a fonte -->
-        <button onclick="adjustFontSize(-1)">A-</button> <!-- Diminui a fonte -->
-        <button onclick="resetFontSize()">Reset</button> <!-- Restaura a fonte -->
-      </div> 
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
     {% block 'head' %} {% endblock %}
     <title>
       {% block 'title' %}
-        
+
       {% endblock 'title' %}
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    {% comment %} <link rel="stylesheet" text= "text/css" href="{% static 'style.css' %}"> {% endcomment %}
+    <script src="{% static 'script.js' %}"></script>
+    <link rel="stylesheet" text= "text/css" href="{% static 'style.css' %}">
   </head>
   <body>
-    {% block 'body'%} {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
-  <header>
-    <div>
-      <img src="{% static 'images/logo.png' %}" alt="Logo">
-      {% if user.is_authenticated %}
-        <span id='logado'>Bem-vindo, {{ user.username }}  </span>
-        <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
-        <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
-        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
-        {% comment %} <a class="dropdown" href="{% url 'sair' %}">Sair</a> {% endcomment %}
-      {% else %}
-        <div class="mt-4">
-          <span> Olá Visitante <a class="dropdown" href="{% url 'register' %}">Entre</a> para ter acesso a mais conteúdos. </span>
-        </div>
-      {% endif %}
-    </div>
-  </header>
-
-  <main>
-      <div class="main-top">
-      </div>
-      <div class="main-top">
-        {% if user.is_authenticated and user.is_professor %}
-        <div class="dropdown">
-          <button class="dropbtn">Cadastro</button>
-          <div class="dropdown-content">
-            Deu certo você é professor
-            {% comment %} <a href="{% url 'cadastrar' %}">Cadastro de Usuário</a>
-            <a href="{% url 'cadastrar_livro' %}">Cadastro de Livros</a> {% endcomment %}
-          </div>
-        </div>
-        {% comment %} <div class="dropdown">
-          <button class="dropbtn">Atualização</button>
-          <div class="dropdown-content">
-            <a href="{% url 'alterar_cadastro' %}">Atualização de Usuário</a>
-          </div>
-        </div> {% endcomment %}
-        {%endif%}
-        {% comment %} <a class="menu" href="{% url 'livros' %}"> Lista de Livros</a> {% endcomment %}
-      </div>
-      {% comment %} <div class="container"> {% endcomment %}
-        {% comment %} {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %} {% endcomment %}
-
-    {% block content %}{% endblock %}
-  </main>
-  <footer class= 'footer'>
-    {% comment %} <a href="https://rnbc.org.br/redes/literasampa-sp/" target="_blank"><img class="footer-img" src="https://i.imgur.com/57vu6eu.jpg"/> {% endcomment %}
-    <a href="https://www.instagram.com/luana.albino/" target="_blank"><img class="footer-img" src="https://i.imgur.com/XjchrUQ.png"/></a>
-  </footer>
+    <header>
+      <article class="font-size">
+        <a href="{% url 'index' %}">
+          <img src="{% static 'images/logo.png' %}" class="home-img" alt="Logo do Agenda Fitness">
+        </a>
+        <nav>
+          <p>Alterar tamanho da fonte: </p>
+          <button onclick="adjustFontSize(1)" class="button">A+</button> <!-- Aumenta a fonte -->
+          <button onclick="adjustFontSize(-1)" class="button">A-</button> <!-- Diminui a fonte -->
+          <button onclick="resetFontSize()" class="button">Reset</button> <!-- Restaura a fonte -->
+        </nav>
+      </article>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    </header>
+    <main>
+        <nav>
+          {% block content %}
+          {% if user.is_authenticated %}
+          <p id='logado'>Bem-vindo, {{ user.username }}  </p>
+          <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
+          <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
+          <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+          {% else %}
+          <article class="mt-4">
+            <p> Olá Visitante <a class="dropdown" href="{% url 'register' %}">Entre</a> para ter acesso a mais conteúdos. </p>
+          </article>
+          {% endif %}
+          {% endblock content %}
+        </nav>
+    </main>
+    <footer class= 'footer'>
+      <a href="https://www.instagram.com/luana.albino/" target="_blank"><img class="footer-img" src="https://i.imgur.com/XjchrUQ.png" alt="logo do instagram"></a>
+    </footer>
   </body>
 </html>
