@@ -1,19 +1,17 @@
 {% extends 'shared/base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block 'title' %}Home{% endblock 'title' %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1>Bem-vindo ao Agenda Fácil</h1>
-        <p>Olá, {{ user.username }}! Você está logado(a).</p>
-        <p>Sistema de Agendamento de Treinos</p>
+    <section>
+        <h1>Sistema de Agendamento de Treinos</h1>
         <p>Este sistema permite o gerenciamento de treinos entre professores e alunos.</p>
-        <div class="mt-4">
+        <nav class="menu">
             <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
             <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
             <a href="{% url 'register' %}" class="btn btn-dark">Cadastrar Novo Usuário</a>
             <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
-        </div>
-    </div>
+        </nav>
+    </section>
 {% endblock %}
 

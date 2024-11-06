@@ -2,10 +2,6 @@ import pytest
 from apps.users.models import UserProfile
 
 @pytest.mark.django_db
-#arrange
-#act
-#assert
-
 #Testa a criação de um usuário
 def test_create_user():
   #arrange

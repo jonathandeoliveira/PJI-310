@@ -126,7 +126,7 @@ STATIC_URL = "static/"
 # coloquei pra conseguir ler o CSS
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, STATIC_URL),
-    BASE_DIR / "templates/shared/static",  # Aponta para a pasta de arquivos estáticos
+   # BASE_DIR / "templates/shared/static",  # Aponta para a pasta de arquivos estáticos
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
