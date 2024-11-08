@@ -6,12 +6,11 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 
-#@login_required
 def index(request):
     return render(request, "agenda/index.html")
 
 
-#@login_required
+@login_required
 def cadastrar_agenda(request):
     if request.method == 'POST':
         form = AgendaForm(request.POST)
@@ -26,14 +25,14 @@ def cadastrar_agenda(request):
     return render(request, "agenda/cadastrar_agenda.html", {'form': form})
 
 
-#@login_required
+@login_required
 def listar_agendas(request):
     user = request.user
     agendas = Agenda.objects.filter(Q(professor=user) | Q(aluno=user))
     return render(request, "agenda/listar_agendas.html", {'agendas': agendas})
 
 
-#@login_required
+@login_required
 def editar_agenda(request, agenda_id):
     agenda = get_object_or_404(Agenda, id=agenda_id)
     if request.user != agenda.professor and request.user != agenda.aluno:
@@ -50,7 +49,7 @@ def editar_agenda(request, agenda_id):
     return render(request, 'agenda/editar_agenda.html', {'form': form, 'agenda': agenda})
 
 
-#@login_required
+@login_required
 def deletar_agenda(request, agenda_id):
     agenda = get_object_or_404(Agenda, id=agenda_id)
     if request.user != agenda.professor and request.user != agenda.aluno:
