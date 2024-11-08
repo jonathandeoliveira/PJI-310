@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import pytest
 from apps.users.models import UserProfile
+from django.urls import reverse
 
 
   # Configura o driver do Chrome em modo headless, necessário para fazer o teste sem abrir o navegador. É o setup do selenium.
@@ -120,6 +121,7 @@ def test_reset_font_size():
     finally:
         driver.quit()
         
+
 @pytest.fixture
 @pytest.mark.django_db
 def create_user():
@@ -131,38 +133,69 @@ def create_user():
         document='98765432109',
         full_address='Avenida dos Testes, 456, Rio de Janeiro - RJ',
         birth_date='1995-03-15',
-        phone='21987654321'
-    )  
+        phone='21987654321',
+        is_professor='True'
+    )
     return user
+
 
 @pytest.mark.django_db
 def test_user_login(client, create_user):
+    # Parte 1: Teste com o client (sem interface gráfica)
+    login_url = reverse("login")
+    username = create_user.email
+    password = "password123"  # A senha correta
+
+    # Fazendo login usando o client
+    response = client.post(login_url, {
+        "email": username,
+        "password": password
+    })
+
+    # Verifica se o redirecionamento foi bem-sucedido
+    assert response.status_code == 302, "O login não redirecionou como esperado."
+    
+    # Verifica se o usuário foi autenticado
+    user = client.login(email=username, password=password)
+    assert user, "Erro: Usuário não autenticado."
+
+    # Você pode verificar para onde o usuário foi redirecionado
+    redirect_url = response.get('Location')
+    assert redirect_url == reverse("index"), f"Redirecionamento esperado para 'index', mas obteve {redirect_url}."
+
+    # Parte 2: Teste com Selenium (interface gráfica)
+    # Função setup_driver() deve estar definida para configurar o WebDriver
     driver = setup_driver()
-    wait = WebDriverWait(driver, 10)  # Cria uma instância do WebDriverWait
-    username = create_user.email  # Recupera o nome de usuário do usuário criado
-    password = create_user.password # Define a senha
+    # Cria uma instância do WebDriverWait para Selenium
+    wait = WebDriverWait(driver, 10)
 
     try:
         # Navegar para a página de login
-        driver.get("http://localhost:8000/login/") 
+        driver.get("http://localhost:8000/login/")
 
         # Encontrar campos de entrada e fazer login
-        username_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#email")))  
-        password_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#password"))) 
+        username_input = wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#email")))
+        password_input = wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#password")))
 
         username_input.send_keys(username)
         password_input.send_keys(password)
 
         # Submeter o formulário de login
-        login_button = wait.until(EC.presence_of_element_located((By.XPATH, "//button[@type='Entrar']")))
+        login_button = wait.until(EC.presence_of_element_located(
+            (By.XPATH, "//button[@type='submit']")))
         login_button.click()
 
-        # Esperar até que o elemento <span> esteja presente
-        text_element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#logado")))
+        # Esperar até que o elemento de saudação esteja presente (indicando login bem-sucedido)
+        text_element = wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#logado")))
 
         # Verificar se o texto contém "Bem-vindo"
         expected_text = f"Bem-vindo, {create_user.username}!"
-        assert expected_text in text_element.text, f"Texto esperado '{expected_text}' não encontrado. Texto atual: '{text_element.text}'"    
+        assert expected_text in text_element.text, f"Texto esperado '{
+            expected_text}' não encontrado. Texto atual: '{text_element.text}'"
+
     finally:
         driver.quit()
 

@@ -135,7 +135,7 @@ footer{
     width:100%;
     flex-shrink: 0;
 }
-.footer-link {
+.footer-link{
     display: block;
     text-align: center;
     color: #555;

@@ -3,6 +3,13 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import UserProfile
 
 class UserProfileCreationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+
+        # Oculta o campo 'is_professor' se o usuário não for professor
+        if not (user and user.is_authenticated and user.is_professor):
+            self.fields.pop('is_professor')
     class Meta:
         model = UserProfile
         fields = [
