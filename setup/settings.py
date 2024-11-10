@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "apps.agenda.apps.AgendaConfig",
     "apps.users.apps.UsersConfig",
+    "apps.api_advice.apps.ApiAdviceConfig",
 ]
 
 MIDDLEWARE = [

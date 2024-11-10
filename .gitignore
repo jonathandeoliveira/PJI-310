@@ -171,3 +171,4 @@ __pycache__
 *.env
 .vscode
 .idea/
+.error.log
