@@ -17,26 +17,6 @@
             <p>Ou clique em <a href="{% url 'register' %}" >Cadastrar-se</a> para criar uma conta.
         {% endif %}
         <p>Este sistema permite o gerenciamento de treinos entre professores e alunos.</p>
-        <nav class="menu">
-            {% comment %} <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
-            <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a> {% endcomment %}
-            {% comment %} <a  class="dropdown" href="{% url 'register' %}"> Olá Visitante Entre para ter acesso a mais conteúdos. </a> {% endcomment %}
-            
-            {% comment %} <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a> {% endcomment %}
-        </nav>
     </section>
 
  {% endblock content %}
-
-{% comment %} {% block content %}
-{% if user.is_authenticated %}
-  <p id='logado'>Bem-vindo, {{ user.username }}  </p>
-  <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
-  <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
-  <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
-{% else %}
-  <article class="mt-4">
-    <p> Olá Visitante <a class="dropdown" href="{% url 'register' %}">Entre</a> para ter acesso a mais conteúdos. </p>
-  </article>
-{% endif %}
-{% endblock content %}  {% endcomment %}

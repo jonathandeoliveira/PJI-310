@@ -9,10 +9,10 @@
                 {% csrf_token %}
                 {% for field in form %}
                     <div class="mb-3">
-                        {{ field.label_tag }} <!-- Exibe o label do campo -->
+                        {{ field.label_tag }} 
                         {{ field }}
                         {% if field.errors %}
-                            <div class="text-danger small">{{ field.errors|join:", " }}</div> <!-- Exibe erros, separados por vírgula -->
+                            <div class="text-danger small">{{ field.errors|join:", " }}</div> 
                         {% endif %}
                     </div>
                 {% endfor %}
