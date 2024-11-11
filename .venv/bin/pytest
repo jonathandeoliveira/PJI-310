@@ -1,8 +1,9 @@
-#!/home/vanderson/djangoPI/PJI-310/PJI-310/.venv/bin/python3
+#!/home/jonathan/PJI-240/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
 from pytest import console_main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+
+if __name__ == "__main__":
+    sys.argv[0] = re.sub(r"(-script\.pyw|\.exe)?$", "", sys.argv[0])
     sys.exit(console_main())
