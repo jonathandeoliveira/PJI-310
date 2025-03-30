@@ -32,7 +32,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["jhowxd1.pythonanywhere.com", "127.0.0.1"]
 
 
 # Application definition
@@ -85,7 +85,8 @@ WSGI_APPLICATION = "setup.wsgi.application"
 
 DATABASES = {
     "default": env.db_url(
-        "DATABASE_URL", default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
+        "DATABASE_URL", default=f'sqlite:///{BASE_DIR / "db.sqlite3"}'
+    )
 }
 
 
@@ -123,18 +124,32 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
-# coloquei pra conseguir ler o CSS
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, STATIC_URL),
-   # BASE_DIR / "templates/shared/static",  # Aponta para a pasta de arquivos estáticos
-]
+STATIC_URL = "staticfiles/"
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+STATIC_ROOT = os.path.join(
+    BASE_DIR, "staticfiles/"
+)  #    BASE_DIR / "templates/shared/static",  # Aponta para a pasta de arquivos estáticos
+
+
+# # URL for static files
+# STATIC_URL = 'static/'
+
+# # Directories where Django will look for static files
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')  # Pasta onde ficam os arquivos CSS, JS e imagens
+
+
+# # The directory where static files will be collected when running collectstatic
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = 'users.UserProfile'
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'login'
+AUTH_USER_MODEL = "users.UserProfile"
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "login"
