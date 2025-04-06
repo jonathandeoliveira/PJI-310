@@ -3,20 +3,59 @@
 {% block 'title' %}Home{% endblock 'title' %}
 
 {% block content %}
-    <section>
-        <h1>Sistema de Agendamento de Treinos</h1>
-        {% if user.is_authenticated %}
-            <p>Bem-vindo, {{ user.username }}!</p>
-            <nav class="menu">
-                <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
-                <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
-                <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
-            </nav>
-        {% else %}
-            <p>Olá, visitante! <a href="{% url 'login' %}">Entre</a> para ter acesso a mais conteúdos.</p>
-            <p>Ou clique em <a href="{% url 'register' %}" >Cadastrar-se</a> para criar uma conta.
-        {% endif %}
-        <p>Este sistema permite o gerenciamento de treinos entre professores e alunos.</p>
-    </section>
+<section>
+    <h1>Sistema de Agendamento de Treinos</h1>
 
- {% endblock content %}
+    {% if user.is_authenticated %}
+        <p>Bem-vindo, {{ user.username }}!</p>
+        <nav class="menu mb-3">
+            <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
+            <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+        </nav>
+    {% else %}
+        <p>Olá, visitante! <a href="{% url 'login' %}">Entre</a> para ter acesso a mais conteúdos.</p>
+        <p>Ou clique em <a href="{% url 'register' %}">Cadastrar-se</a> para criar uma conta.</p>
+    {% endif %}
+
+    <p>Este sistema permite o gerenciamento de treinos entre professores e alunos.</p>
+
+    <!-- Botão de conselho -->
+    <div class="text-center mt-5">
+        <button id="lucky-biscuit-btn" class="btn btn-info">🍪 Conselho grátis</button>
+        <div id="advice-container" class="mt-4" style="font-style: italic; font-size: 1.2em;"></div>
+    </div>
+</section>
+
+<!-- jQuery e script AJAX -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const button = $('#lucky-biscuit-btn');
+        const container = $('#advice-container');
+
+        button.click(function () {
+            button.prop('disabled', true).text('⏳ Buscando...');
+            container.html('');
+
+            $.ajax({
+                url: '{% url "conselho" %}',  // Agora usando o nome da URL correta
+                type: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'  // Garante que a view reconheça como AJAX
+                },
+                success: function (response) {
+                    container.html('<p>💬 ' + response.advice + '</p>');
+                },
+                error: function () {
+                    container.html('<p style="color:red;">❌ Ocorreu um erro ao obter o conselho.</p>');
+                },
+                complete: function () {
+                    button.prop('disabled', false).text('🍪 Conselho grátis');
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock content %}

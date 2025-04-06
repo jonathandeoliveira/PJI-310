@@ -2,12 +2,12 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.core.cache import cache
 import requests
-from googletrans import Translator, LANGUAGES
 import time
+from deep_translator import GoogleTranslator
 
-# Configuração de controle de requisições
 LAST_REQUEST_TIME = None
-REQUEST_COOLDOWN = 2  # 2 segundos
+REQUEST_COOLDOWN = 2  # segundos
+
 
 def get_advice():
     global LAST_REQUEST_TIME
@@ -16,33 +16,32 @@ def get_advice():
         return "Por favor, aguarde antes de tentar novamente."
 
     try:
-        # Tenta obter o conselho do cache primeiro
         advice = cache.get("advice")
-
         if not advice:
-            response = requests.get("https://api.adviceslip.com/advice")
-
+            response = requests.get("https://zenquotes.io/api/random")
             if response.status_code == 200:
-                advice_json = response.json()
+                data = response.json()
 
-                if "slip" in advice_json and "advice" in advice_json["slip"]:
-                    advice_text = advice_json["slip"]["advice"]
-                    
-                    # Tradução com o googletrans
+                if isinstance(data, list) and data and "q" in data[0]:
+                    quote = data[0]["q"]
+                    author = data[0].get("a", "Autor desconhecido")
+                    full_quote = f"{quote} — {author}"
+
+                    # Tradução mais estável
                     try:
-                        translator = Translator()
-                        translation = translator.translate(advice_text, src="en", dest="pt").text
+                        translation = GoogleTranslator(
+                            source="auto", target="pt"
+                        ).translate(full_quote)
                     except Exception as e:
-                        translation = f"Erro ao traduzir: {str(e)}"
-                    
-                    # Armazena a tradução no cache por 10 minutos
+                        translation = f"{full_quote} (tradução indisponível)"
+
                     cache.set("advice", translation, timeout=600)
                     LAST_REQUEST_TIME = time.time()
                     return translation
                 else:
-                    return "Não foi possível obter o conselho válido da API."
+                    return "Não foi possível obter a citação válida da API."
             else:
-                return "Desculpe, não foi possível obter o conselho."
+                return "Desculpe, não foi possível obter a citação."
 
         return advice
 
@@ -50,6 +49,7 @@ def get_advice():
         return f"Erro ao fazer requisição: {str(e)}"
     except Exception as e:
         return f"Erro ao processar a requisição: {str(e)}"
+
 
 def conselho(request):
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
