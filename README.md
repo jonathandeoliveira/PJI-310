@@ -1,6 +1,6 @@
-# Projeto Integrador II - Univesp
+# Projeto Integrador III - Univesp
 
-Este repositório contém o projeto desenvolvido para o **Projeto Integrador II** da **Univesp**. O principal objetivo deste projeto é construir uma aplicação web que integre diversas tecnologias, incluindo banco de dados, scripts web com **JavaScript**, **Nuvem**, consumo de **APIs**, **Acessibilidade**, controle de versão e **Testes**.
+Este repositório contém o projeto desenvolvido para o **Projeto Integrador III** da **Univesp**. O principal objetivo deste projeto é construir uma aplicação web que integre diversas tecnologias, incluindo banco de dados, scripts web com **JavaScript**, **Nuvem**, consumo de **APIs**, **Acessibilidade**, controle de versão, **Testes** e **Análise de Dados**.
 
 ## 📋 Índice
 
@@ -26,13 +26,13 @@ Este projeto tem como foco a criação de uma aplicação web funcional e práti
 ## 👥 Colaboradores
 
 - [Bianca Fileto](https://github.com/bifileto)
-- [Fabio Moreira](https://github.com/FabbHub)
+- [Caroline Bianca](link_do_github)
+- [Eduardo Luiz](link_do_github)
 - [Gustavo Santos](https://github.com/Gustavo-Santos2)
 - [Jonathan De Oliveira](https://github.com/jonathandeoliveira)
 - [Marcio Sampaio](https://github.com/marciosampaioabc)
-- [Maykon Custodio](link_do_github)
-- [Otavio Augusto](link_do_github)
-- [Rafael Da Silva](link_do_github)
+- [Miguel Angelo](link_do_github)
+- [Vanderson Balieiro](https://github.com/VandersonB)
 
 ## 🚀 Tecnologias Utilizadas
 
