@@ -7,7 +7,7 @@ from apps.agenda.views import (
     deletar_agenda,
     analytics_view,
     analytics_details,
-)
+    cancelar_agenda)
 from . import views
 
 urlpatterns = [
@@ -18,4 +18,5 @@ urlpatterns = [
     path("deletar_agenda/<int:agenda_id>/", deletar_agenda, name="deletar_agenda"),
     path("analytics/", analytics_view, name="analytics"),
     path("analytics_finance/",analytics_details,name="analytics_finance")
+    path("cancelar_agenda/<int:agenda_id>/", cancelar_agenda, name="cancelar_agenda"),
 ]

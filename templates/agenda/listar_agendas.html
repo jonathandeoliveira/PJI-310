@@ -30,28 +30,34 @@
                     <th>Ações</th>
                 </tr>
             </thead>
+
             <tbody>
                 {% for agenda in agendas %}
-                 <tr class>
-                     <td>{{ agenda.professor }}</td>
-                     <td>{{ agenda.aluno }}</td>
-                     <td>{{ agenda.valor }}</td>
-                     <td>{{ agenda.data }}</td>
-                     <td>{{ agenda.hora }}</td>
-                     <td>{{ agenda.descricao }}</td>
-                     <td>{{ agenda.created_at }}</td>
-                     <td>
-                         <a href="{% url 'editar_agenda' agenda.id %}" class="btn btn-primary btn-sm">Editar Treino</a>
-                         <a href="{% url 'deletar_agenda' agenda.id %}" class="btn btn-danger btn-sm">Deletar Treino</a>
-                     </td>
-                 </tr>
-
+                    <tr {% if agenda.cancelado %}class="table table-striped"{% endif %}>
+                        <td>{{ agenda.professor }}</td>
+                        <td>{{ agenda.aluno }}</td>
+                        <td>{{ agenda.valor }}</td>
+                        <td>{{ agenda.data|date:"d/m/Y" }}</td>
+                        <td>{{ agenda.hora|time:"H:i" }}</td>
+                        <td>{{ agenda.descricao }}</td>
+                        <td>{{ agenda.created_at|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            {% if agenda.cancelado %}
+                                <span class="badge bg-danger">❌ Treino Cancelado</span>
+                            {% else %}
+                                <a href="{% url 'editar_agenda' agenda.id %}"class="btn btn-primary btn-sm me-1">Editar</a>
+                                <a href="{% url 'cancelar_agenda' agenda.id %}"class="btn btn-warning btn-sm me-1"onclick="return confirm('Tem certeza que deseja cancelar este treino?')">Cancelar</a>
+                                <a href="{% url 'deletar_agenda' agenda.id %}" class="btn btn-danger btn-sm">Deletar</a>
+                            {% endif %}
+                        </td>
+                    </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="8">Agenda vazia!</td>
+                        <td colspan="8" class="text-center">Nenhum treino agendado</td>
                     </tr>
                 {% endfor %}
             </tbody>
+            
         </table>
     </div>
 {% endblock content %}

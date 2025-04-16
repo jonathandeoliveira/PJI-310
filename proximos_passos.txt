@@ -1,18 +1,16 @@
-criar validação nas views para que o usuario só veja seus próprios treinos ok
-criar teste para a validação acima ok 
+Próximos passos no desenvolvimento do código:
 
-criar método para disparo de email OU inserção de treino em agenda pessoal, para o email do usuario cadastrado
-Microsoft Azure com problemas com a conta de estudante da univesp, tentar outra alternativa
+	Funcionalidades do sistema:
+		* Restringir o cadastro de aulas apenas aos professores;
+		* Fixar o professor no momento da criação da aula, impedindo alterações posteriores;
+		* Permitir o cancelamento de aulas pelos alunos apenas com antecedência mínima de 24 horas.
 
-criar acessibilidade com botão para alto contraste e aumento de letras
-testar funcionalidade acima (verificar como/se é possivel realizar este teste)
+	Implementação de relatórios com Bokeh:
+		* Integrar o Bokeh para geração de relatórios interativos;
+		* Relatórios devem ser fixos e acessíveis apenas pelo professor responsável;
+		* Relatórios individuais de alunos devem seguir a mesma lógica de restrição de acesso.
 
 analisar o pythonanywere.com para deploy
-
-
-
-
-
     testando
     username='professor123',
     email='professor123@example.com',
