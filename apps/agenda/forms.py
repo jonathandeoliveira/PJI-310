@@ -54,13 +54,21 @@ class AgendaForm(forms.ModelForm):
         
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)  # Captura o usuário vindo da view
         super().__init__(*args, **kwargs)
-        
-        # Filtra o campo 'professor' para exibir apenas os usuários com `is_professor=True`
-        self.fields['professor'].queryset = UserProfile.objects.filter(is_professor=True)
-        
-        # Filtra o campo 'aluno' para exibir apenas os usuários com `is_professor=False`
-        self.fields['aluno'].queryset = UserProfile.objects.filter(is_professor=False)
+
+        if user:
+            if user.is_professor:
+                self.fields['professor'].initial = user
+                self.fields['professor'].disabled = True
+            else:
+                self.fields['aluno'].initial = user
+                self.fields['aluno'].disabled = True
+
+        if 'professor' in self.fields:
+            self.fields['professor'].queryset = UserProfile.objects.filter(is_professor=True)
+        if 'aluno' in self.fields:
+            self.fields['aluno'].queryset = UserProfile.objects.filter(is_professor=False)
 
     # Validação customizada para garantir que o valor seja positivo
     def clean_valor(self):

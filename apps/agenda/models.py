@@ -11,6 +11,7 @@ class Agenda(models.Model):
     hora = models.TimeField(null=False, blank=False)
     descricao = models.TextField(null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    cancelado = models.BooleanField(default=False)
 
     def clean(self):
         # Valida se o professor realmente é um professor
@@ -22,5 +23,5 @@ class Agenda(models.Model):
             raise ValidationError("O usuário atribuído como aluno é marcado como professor.")
 
     def __str__(self):
-        return f"{self.professor} - {self.aluno} - {self.data} {self.hora}"
+            return f'Treino de {self.aluno} com {self.professor} em {self.data} - {"Cancelado" if self.cancelado else "Ativo"}'
 
