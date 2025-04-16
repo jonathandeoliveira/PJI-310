@@ -1,6 +1,30 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.core.validators import RegexValidator
+from django.contrib.auth.base_user import BaseUserManager
+
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError("O email é obrigatório")
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError("Superusuário precisa ter is_staff=True")
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError("Superusuário precisa ter is_superuser=True")
+
+        return self.create_user(email, password, **extra_fields)
+
 
 class UserProfile(AbstractUser):
     # Validadores personalizados
@@ -14,7 +38,7 @@ class UserProfile(AbstractUser):
     phone = models.CharField(max_length=14, validators=[phone_validator])
     birth_date = models.DateField()
     full_address = models.CharField(max_length=255)
-    email = models.EmailField(unique=True, blank=True)
+    email = models.EmailField(unique=True, blank=False)
 
     # Campos específicos para professores
     # Define se o usuário é um professor
@@ -26,9 +50,12 @@ class UserProfile(AbstractUser):
 
     REQUIRED_FIELDS = ['document', 'birth_date', 'full_address', 'postal_code', 'phone']
     USERNAME_FIELD = 'email'
+    
+    objects = CustomUserManager()
+
 
     def __str__(self):
-        return self.username
+        return self.email
 
     class Meta:
         verbose_name = "User Profile"
