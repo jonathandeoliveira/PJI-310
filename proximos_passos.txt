@@ -11,6 +11,12 @@ Próximos passos no desenvolvimento do código:
 		* Relatórios individuais de alunos devem seguir a mesma lógica de restrição de acesso.
 
 analisar o pythonanywere.com para deploy
+
+
+
+
+
+
     testando
     username='professor123',
     email='professor123@example.com',
