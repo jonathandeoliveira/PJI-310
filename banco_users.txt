@@ -1,0 +1,10 @@
+1,pbkdf2_sha256$870000$e99nybTrfzfEuvtaOxbfJJ$4tOncvVTv9Ye5/yei7ShyooBifCd1+fo4/VeODTcoyk=,2025-04-16 01:19:42.786524,1,,,,1,1,2025-04-16 01:19:06.344021,36847088877,12345678,11912345678,1988-03-12,rua dos alunos 123,balieirovanderson@hotmail.com,0
+2,password,,0,aluno@aluno.com.br,aluno,Filho,0,1,2025-04-16,12345678900,12345789,11912345678,1990-02-01,rua dos alunos9 456,aluno@aluno.com.br,0
+3,password,,0,fabio@aluno.com.br,fabio,Folgado,0,1,2025-03-16,98765432100,12356789,11981816545,1985-06-24,rua dos alunos8 456,fabio@aluno.com.br,0
+4,password,,0,joao@aluno.com.br,Joao,Feijao,0,1,2025-02-16,15948763200,98765123,11989971234,1995-04-30,rua dos alunos7 456,joao@aluno.com.br,0
+5,password,,0,jose@aluno.com.br,Jose,Geronimo,0,1,2024-04-16,15923687400,98765321,11994235678,1988-12-12,rua dos alunos6 456,jose@aluno.com.br,0
+6,password,,0,alfredo@aluno.com.br,Alfredo,Figueiredo,0,1,2024-08-16,23615947800,14785369,11998746321,2000-03-14,rua dos alunos5 456,alfredo@aluno.com.br,0
+7,password,,0,raimundo@aluno.com.br,Raimundo,Vaz,0,1,2024-07-16,47815923600,36985147,11996965478,2001-05-18,rua dos alunos4 6,raimundo@aluno.com.br,0
+8,password,,0,carlos@aluno.com.br,Carlos,Adao,0,1,2023-04-16,98745632100,65412789,11995954121,2005-08-10,rua dos alunos3 456,carlos@aluno.com.br,0
+9,password,,0,eduardo@aluno.com.br,Eduardo,Biroliro,0,1,2023-12-16,12365478900,02345789,11997974565,1992-10-12,rua dos alunos2 6,eduardo@aluno.com.br,0
+10,password,,0,tiago@aluno.com.br,Tiago,Silva,0,1,2025-01-20,96325874100,09087456,11931346598,1980-09-06,rua dos alunos1 456,tiago@aluno.com.br,0
