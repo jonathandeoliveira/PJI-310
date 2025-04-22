@@ -8,3 +8,5 @@
 8,password,,0,carlos@aluno.com.br,Carlos,Adao,0,1,2023-04-16,98745632100,65412789,11995954121,2005-08-10,rua dos alunos3 456,carlos@aluno.com.br,0
 9,password,,0,eduardo@aluno.com.br,Eduardo,Biroliro,0,1,2023-12-16,12365478900,02345789,11997974565,1992-10-12,rua dos alunos2 6,eduardo@aluno.com.br,0
 10,password,,0,tiago@aluno.com.br,Tiago,Silva,0,1,2025-01-20,96325874100,09087456,11931346598,1980-09-06,rua dos alunos1 456,tiago@aluno.com.br,0
+11,password,,0,carla@aluno.com.br,Carla,Alvarenga,1,1,2022-01-20 00:00:00,12305698700,09815789,11947452136,1994-10-06,rua dos professores 456,carla@aluno.com.br,1
+13,pbkdf2_sha256$870000$9CFO6IDR347uS30a55dZFe$H2kTi/CR8NUev1/QcrKKRiu7HZaDBhurZTg5yGrjQIM=,,0,Carol,,,0,1,2025-04-21 02:11:18.637773,75386941200,75321456,11978845963,2001-11-12,"Rua dos Professores, 245",carol@aluno.com.br,1

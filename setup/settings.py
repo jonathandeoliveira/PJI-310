@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "apps.agenda.apps.AgendaConfig",
     "apps.users.apps.UsersConfig",
     "apps.api_advice.apps.ApiAdviceConfig",
+    "apps.dashboard.apps.DashboardConfig",
 ]
 
 MIDDLEWARE = [
