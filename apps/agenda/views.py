@@ -4,6 +4,8 @@ from apps.agenda.forms import AgendaForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from bokeh.plotting import figure
+from bokeh.embed import components
 
 
 def index(request):
@@ -60,3 +62,11 @@ def deletar_agenda(request, agenda_id):
     agenda.delete()
     messages.success(request, "Treino deletado com sucesso!")
     return redirect("listar_agendas")
+
+
+def analytics_view(request):
+    p = figure(title="Gráfico Teste", x_axis_label="X", y_axis_label="Y")
+    p.vbar(x=[1, 2, 3, 4, 5], top=[6, 7, 2, 4, 5], width=0.5)
+
+    script, div = components(p)
+    return render(request, "agenda/analytics.html", {"script": script, "div": div})

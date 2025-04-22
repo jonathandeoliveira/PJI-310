@@ -1,13 +1,13 @@
 {% extends 'shared/base.html' %}
 
-{% block 'title' %}Home{% endblock 'title' %}
+{% block title %}Home{% endblock title %}
 
 {% block content %}
 <section>
     <h1>Sistema de Agendamento de Treinos</h1>
 
     {% if user.is_authenticated %}
-        <p>Bem-vindo, {{ user.username }}!</p>
+        <p>Bem-vindo, {{ user.email }}!</p>
         <nav class="menu mb-3">
             <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
             <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>

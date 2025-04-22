@@ -1,0 +1,16 @@
+{% extends "shared/base.html" %}
+
+{% block title %}Gráfico com Bokeh{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">Gráfico com Bokeh</h2>
+        
+        <!-- Aqui será exibido o gráfico -->
+        {{ div|safe }}
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    {{ script|safe }}
+{% endblock %}
