@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from bokeh.plotting import figure, show
 import calendar
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta 
 from bokeh.embed import components
 from django.db.models.functions import ExtractMonth, ExtractYear
 from django.db.models import Sum
@@ -71,7 +73,8 @@ def deletar_agenda(request, agenda_id):
 def analytics_view(request):
     # Filtrar as aulas da professora logada
     professor = request.user
-    aulas = Agenda.objects.filter(professor=professor)
+    data_limite = datetime.today() - relativedelta(months=3)
+    aulas = Agenda.objects.filter(professor=professor,data__gte=data_limite)
       
     #somar os valores por mês
     aulas_por_mes = (
@@ -87,18 +90,37 @@ def analytics_view(request):
     
     #Bokeh não aceita decimal, então é necessário converter para float
     v=[float(v) for v in valores]
-    #Criação de rótulo específico para ordenação do eixo x em mes/ano
-    rotulos = [
-    f"{calendar.month_abbr[aula['mes']]}/{aula['ano']}" for aula in aulas_por_mes
+   
+    #Código específico para mostrar os últimos 3 meses, no formato mês/ano.
+    ultimos_meses = [
+    (datetime.today() - relativedelta(months=2)).replace(day=1),
+    (datetime.today() - relativedelta(months=1)).replace(day=1),
+     datetime.today().replace(day=1),
     ]
     
+    dados_reais = {
+    (aula['mes'], aula['ano']): float(aula['total'])
+    for aula in aulas_por_mes
+    }
+    
+    meses_formatados = []
+    valores_formatados = []
+
+    for data in ultimos_meses:
+        mes = data.month
+        ano = data.year
+        total = dados_reais.get((mes, ano), 0)  # Pega valor real ou 0
+        label = f"{calendar.month_abbr[mes]}/{ano}"  
+        meses_formatados.append(label)
+        valores_formatados.append(total)
+      
     # Criar o gráfico com Bokeh
     p = figure(#title="Relatório Financeiro (últimos 3 meses)",
         #title_location="above",
         x_axis_label="Mês",
         y_axis_label="Total (R$)",
         #x_range=[str(mes) for mes in meses_nomes],
-        x_range=rotulos,
+        x_range=meses_formatados,
         y_range=(0, max(v) + 20),
         width=800,
         height=400,
@@ -109,7 +131,7 @@ def analytics_view(request):
         )
     
     # Configurações do grafico
-    p.vbar(x=rotulos, top=v, width=0.5, color="blue")
+    p.vbar(x=meses_formatados, top=valores_formatados, width=0.5, color="blue")
     p.title.align = "left"
     p.title.text_font_size = "24px"
     p.title.text_color = "Blue"
