@@ -4,13 +4,52 @@
 
 {% block content %}
     <div class="container mt-5">
-        <h2 class="mb-4">Gráfico com Bokeh</h2>
+        <h2 class="mb-4">Visualização Geral</h2>
+        <h1 class="h1">Rendimento dos últimos 3 meses</h1>
         
         <!-- Aqui será exibido o gráfico -->
+        {{ script|safe }}
         {{ div|safe }}
+
+        <a href="#" class="btn btn-success">Relatório Detalhado</a>
+         <!-- listar os rendimentos dos últimos 3 meses e listar alunos ativos-->
+    </div>
+
+    <div class="container mt-5">
+        <h2>Lista de alunos ativos</h2>
+        <a href="#" class="btn btn-success">Mais detalhes</a>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Valor(R$)</th>
+                    <th>Criado em</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for agenda in agendas %}
+                 <tr class>
+                     <td>{{ agenda.aluno }}</td>
+                     <td>{{ agenda.valor }}</td>
+                     <td>{{ agenda.created_at }}</td>
+                     <td>
+                         <a href="#" class="btn btn-primary btn-sm">Ativo</a>
+                         <a href="#" class="btn btn-danger btn-sm">Inativo</a>
+                     </td>
+                 </tr>
+
+                {% empty %}
+                    <tr>
+                        <td colspan="8">Agenda vazia!</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
 
-{% block extra_scripts %}
-    {{ script|safe }}
+<!--{% block extra_scripts %}-->
+    <!--{{ script|safe }}-->
 {% endblock %}

@@ -4,8 +4,12 @@ from apps.agenda.forms import AgendaForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from bokeh.plotting import figure
+from bokeh.plotting import figure, show
+import calendar
 from bokeh.embed import components
+from django.db.models.functions import ExtractMonth, ExtractYear
+from django.db.models import Sum
+
 
 
 def index(request):
@@ -63,10 +67,68 @@ def deletar_agenda(request, agenda_id):
     messages.success(request, "Treino deletado com sucesso!")
     return redirect("listar_agendas")
 
-
+@login_required
 def analytics_view(request):
-    p = figure(title="Gráfico Teste", x_axis_label="X", y_axis_label="Y")
-    p.vbar(x=[1, 2, 3, 4, 5], top=[6, 7, 2, 4, 5], width=0.5)
+    # Filtrar as aulas da professora logada
+    professor = request.user
+    aulas = Agenda.objects.filter(professor=professor)
+      
+    #somar os valores por mês
+    aulas_por_mes = (
+        aulas.annotate(mes=ExtractMonth('data'),ano=ExtractYear('data'))
+        .values('mes','ano')
+        .annotate(total=Sum('valor'))
+        .order_by('ano','mes')
+    )
+    
+    
+    # Extrair os dados para o gráfico
+    valores = [aula['total'] for aula in aulas_por_mes]
+    
+    #Bokeh não aceita decimal, então é necessário converter para float
+    v=[float(v) for v in valores]
+    #Criação de rótulo específico para ordenação do eixo x em mes/ano
+    rotulos = [
+    f"{calendar.month_abbr[aula['mes']]}/{aula['ano']}" for aula in aulas_por_mes
+    ]
+    
+    # Criar o gráfico com Bokeh
+    p = figure(#title="Relatório Financeiro (últimos 3 meses)",
+        #title_location="above",
+        x_axis_label="Mês",
+        y_axis_label="Total (R$)",
+        #x_range=[str(mes) for mes in meses_nomes],
+        x_range=rotulos,
+        y_range=(0, max(v) + 20),
+        width=800,
+        height=400,
+        active_drag=None, 
+        active_scroll=None,
+        active_inspect=None,
+        toolbar_location=None,
+        )
+    
+    # Configurações do grafico
+    p.vbar(x=rotulos, top=v, width=0.5, color="blue")
+    p.title.align = "left"
+    p.title.text_font_size = "24px"
+    p.title.text_color = "Blue"
+    p.background_fill_color = "#F0F0FF"
+    p.border_fill_color = "#F0F0FF" 
+    p.xaxis.major_label_text_font_size = "14pt"
+    p.yaxis.major_label_text_font_size = "14pt"
+    p.xaxis.axis_label_text_font_size = "16pt"
+    p.yaxis.axis_label_text_font_size = "16pt"   
+
+        
 
     script, div = components(p)
-    return render(request, "agenda/analytics.html", {"script": script, "div": div})
+    
+    #print(script[:300])
+    #print(div[:300])
+
+    #Consulta aos alunos do professor.
+    #user = request.user
+    agendas = Agenda.objects.filter(Q(professor=professor) | Q(aluno=professor))
+        
+    return render(request, "agenda/analytics.html", {"script": script, "div": div, "agendas": agendas})
