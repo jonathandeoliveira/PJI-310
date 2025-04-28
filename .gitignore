@@ -174,3 +174,5 @@ cython_debug/
 # .error.log
 proximos_passos.txt
 start.txt
+.venv/
+db.sqlite3
