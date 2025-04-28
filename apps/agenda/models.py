@@ -15,6 +15,7 @@ class Agenda(models.Model):
     hora = models.TimeField(null=False, blank=False)
     descricao = models.TextField(null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    cancelado = models.BooleanField(default=False)
 
     def clean(self):
         if not self.professor.is_professor:
@@ -28,4 +29,4 @@ class Agenda(models.Model):
             )
 
     def __str__(self):
-        return f"{self.professor} - {self.aluno} - {self.data} {self.hora}"
+        return f'Treino de {self.aluno} com {self.professor} em {self.data} - {"Cancelado" if self.cancelado else "Ativo"}'

@@ -10,6 +10,7 @@ class AgendaForm(forms.ModelForm):
         model = Agenda
         fields = ["professor", "aluno", "valor", "data", "hora", "descricao"]
 
+        # Customização de widgets para os campos de data e hora
         widgets = {
             "data": forms.DateInput(
                 attrs={"type": "date", "class": "form-control"}, format="%Y-%m-%d"
@@ -25,6 +26,7 @@ class AgendaForm(forms.ModelForm):
             ),
         }
 
+        # Personaliza os rótulos dos campos do formulário
         labels = {
             "professor": "Nome do Professor(a)",
             "aluno": "Nome do Aluno(a)",
@@ -34,6 +36,7 @@ class AgendaForm(forms.ModelForm):
             "descricao": "Descrição do Treino",
         }
 
+        # Define mensagens de erro personalizadas para cada campo
         error_messages = {
             "professor": {
                 "required": "O nome do professor é obrigatório.",
@@ -57,20 +60,34 @@ class AgendaForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop("user", None)  # Captura o usuário vindo da view
         super().__init__(*args, **kwargs)
 
-        self.fields["professor"].queryset = UserProfile.objects.filter(
-            is_professor=True
-        )
+        if user:
+            if user.is_professor:
+                self.fields["professor"].initial = user
+                self.fields["professor"].disabled = True
+            else:
+                self.fields["aluno"].initial = user
+                self.fields["aluno"].disabled = True
 
-        self.fields["aluno"].queryset = UserProfile.objects.filter(is_professor=False)
+        if "professor" in self.fields:
+            self.fields["professor"].queryset = UserProfile.objects.filter(
+                is_professor=True
+            )
+        if "aluno" in self.fields:
+            self.fields["aluno"].queryset = UserProfile.objects.filter(
+                is_professor=False
+            )
 
+    # Validação customizada para garantir que o valor seja positivo
     def clean_valor(self):
         valor = self.cleaned_data.get("valor")
         if valor <= 0:
             raise forms.ValidationError("O valor da aula deve ser maior que zero.")
         return valor
 
+    # Validação customizada para garantir que a data não seja no passado
     def clean_data(self):
         data = self.cleaned_data.get("data")
         if data and data < timezone.now().date():
@@ -82,11 +99,13 @@ class AgendaForm(forms.ModelForm):
         professor = cleaned_data.get("professor")
         aluno = cleaned_data.get("aluno")
 
+        # Valida se o professor realmente é um professor
         if professor and not professor.is_professor:
             raise ValidationError(
                 "O usuário atribuído como professor não é marcado como professor."
             )
 
+        # Valida se o aluno não é um professor (caso aluno seja uma ForeignKey para UserProfile)
         if aluno and aluno.is_professor:
             raise ValidationError(
                 "O usuário atribuído como aluno é marcado como professor."
