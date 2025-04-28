@@ -6,6 +6,7 @@ from apps.agenda.views import (
     editar_agenda,
     deletar_agenda,
     analytics_view,
+    analytics_details,
 )
 from . import views
 
@@ -16,4 +17,5 @@ urlpatterns = [
     path("editar_agenda/<int:agenda_id>/", editar_agenda, name="editar_agenda"),
     path("deletar_agenda/<int:agenda_id>/", deletar_agenda, name="deletar_agenda"),
     path("analytics/", analytics_view, name="analytics"),
+    path("analytics_finance/",analytics_details,name="analytics_finance")
 ]

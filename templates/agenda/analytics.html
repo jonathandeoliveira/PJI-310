@@ -1,6 +1,6 @@
 {% extends "shared/base.html" %}
 
-{% block title %}Gráfico com Bokeh{% endblock %}
+{% block title %}Visualização Geral{% endblock %}
 
 {% block content %}
     <div class="container mt-5">
@@ -11,7 +11,7 @@
         {{ script|safe }}
         {{ div|safe }}
 
-        <a href="#" class="btn btn-success">Relatório Detalhado</a>
+        <a href="{% url 'analytics_finance' %}" class="btn btn-success">Relatório Detalhado</a>
          <!-- listar os rendimentos dos últimos 3 meses e listar alunos ativos-->
     </div>
 

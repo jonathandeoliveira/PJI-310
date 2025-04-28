@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from bokeh.plotting import figure, show
+from bokeh.models import ColumnDataSource
 import calendar
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta 
@@ -154,3 +155,94 @@ def analytics_view(request):
     agendas = Agenda.objects.filter(Q(professor=professor) | Q(aluno=professor))
         
     return render(request, "agenda/analytics.html", {"script": script, "div": div, "agendas": agendas})
+
+@login_required
+def analytics_details(request):
+    
+     # Filtrar as aulas da professora logada
+    professor = request.user
+    periodo = int(request.GET.get('periodo', 6))  # valor padrão 6 meses se não enviar nada
+    data_limite = datetime.today() - relativedelta(months=periodo)
+    aulas = Agenda.objects.filter(professor=professor,data__gte=data_limite)
+      
+    #somar os valores por mês
+    aulas_por_mes = (
+        aulas.annotate(mes=ExtractMonth('data'),ano=ExtractYear('data'))
+        .values('mes','ano')
+        .annotate(total=Sum('valor'))
+        .order_by('ano','mes')
+    )
+    
+    #Calcular os rendimentos de acordo com o período
+    valor_total = aulas.aggregate(total=Sum('valor'))['total'] or 0
+    valor_medio = valor_total / periodo if periodo else 0
+    
+    
+    # Extrair os dados para o gráfico
+    valores = [aula['total'] for aula in aulas_por_mes]
+    
+    #Bokeh não aceita decimal, então é necessário converter para float
+    v=[float(v) for v in valores]
+   
+    #Código específico para mostrar os meses no periodo selecionado
+    ultimos_meses = [
+    (datetime.today() - relativedelta(months=i)).replace(day=1)
+    for i in reversed(range(periodo))
+    ]
+    
+    dados_reais = {
+    (aula['mes'], aula['ano']): float(aula['total'])
+    for aula in aulas_por_mes
+    }
+    
+    meses_formatados = []
+    valores_formatados = []
+
+    for data in ultimos_meses:
+        mes = data.month
+        ano = data.year
+        total = dados_reais.get((mes, ano), 0)  # Pega valor real ou 0
+        label = f"{calendar.month_abbr[mes]}/{ano}"  
+        meses_formatados.append(label)
+        valores_formatados.append(total)
+      
+    # Criar o gráfico com Bokeh
+    p = figure(
+        y_range=meses_formatados, 
+        x_axis_label="Total (R$)",
+        y_axis_label="Mês",
+        width=800,
+        height=400,
+        active_drag=None, 
+        active_scroll=None,
+        active_inspect=None,
+        toolbar_location=None,
+    )
+    
+    # Configurações do grafico
+    source = ColumnDataSource(data=dict(
+    meses=meses_formatados,
+    valores=valores_formatados
+    ))
+
+    p.hbar(y='meses', right='valores',height=0.5,source=source,color="blue")
+    p.title.align = "left"
+    p.title.text_font_size = "24px"
+    p.title.text_color = "Blue"
+    p.background_fill_color = "#F0F0FF"
+    p.border_fill_color = "#F0F0FF" 
+    p.xaxis.major_label_text_font_size = "14pt"
+    p.yaxis.major_label_text_font_size = "14pt"
+    p.xaxis.axis_label_text_font_size = "16pt"  
+    p.yaxis.axis_label_text_font_size = "16pt"   
+
+        
+
+    script, div = components(p)
+    
+    return render(request, "agenda/analytics_finance.html", 
+                  {"script": script, 
+                   "div": div,
+                   "valor_total": valor_total,
+                   "valor_medio" : valor_medio,
+                   "periodo": periodo,})
