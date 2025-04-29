@@ -13,7 +13,7 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <p>Usuário atual: {{ user.username }}</p>
+        <p>Usuário atual: {{ user.email }}</p>
         <a href="{% url 'index' %}" class="btn btn-secondary">Home</a>
         <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
 
@@ -47,7 +47,6 @@
                             {% else %}
                                 <a href="{% url 'editar_agenda' agenda.id %}"class="btn btn-primary btn-sm me-1">Editar</a>
                                 <a href="{% url 'cancelar_agenda' agenda.id %}"class="btn btn-warning btn-sm me-1"onclick="return confirm('Tem certeza que deseja cancelar este treino?')">Cancelar</a>
-                                <a href="{% url 'deletar_agenda' agenda.id %}" class="btn btn-danger btn-sm">Deletar</a>
                             {% endif %}
                         </td>
                     </tr>
