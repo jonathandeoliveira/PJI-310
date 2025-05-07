@@ -11,7 +11,10 @@
         <nav class="menu mb-3">
             <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
             <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
-            <a href="{% url 'analytics' %}" class="btn btn-dark">Relatório</a>
+
+            {% if user.is_professor %}
+                <a href="{% url 'analytics' %}" class="btn btn-dark">Relatório</a>
+            {% endif %}
             <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
         </nav>
     {% else %}
