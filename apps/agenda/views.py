@@ -76,13 +76,19 @@ def listar_agendas(request):
         agendas = agendas.filter(data__lt=hoje, cancelado=False)
     elif filtro == "canceladas":
         agendas = agendas.filter(cancelado=True)
+    elif filtro == "finalizadas":
+        agendas = agendas.filter(data__lt=hoje, cancelado=False)
 
     agendas = agendas.order_by("data", "hora")
 
     return render(
         request,
         "agenda/listar_agendas.html",
-        {"agendas": agendas, "filtro_aplicado": filtro}
+        {
+            "agendas": agendas,
+            "filtro_aplicado": filtro,
+            "hoje": hoje,
+        }
     )
 
 
