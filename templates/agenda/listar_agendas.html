@@ -17,6 +17,24 @@
         <a href="{% url 'index' %}" class="btn btn-secondary">Home</a>
         <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
 
+            <div class="text-center">
+                <form method="get" class="mb-4">
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col-auto">
+                            <label for="filtro" class="col-form-label fw-bold">Filtrar por:</label>
+                        </div>
+                        <div class="col-auto">
+                            <select name="filtro" id="filtro" class="form-select" onchange="this.form.submit()">
+                                <option value="futuras" {% if filtro_aplicado == 'futuras' %}selected{% endif %}>Aulas Futuras</option>
+                                <option value="passadas" {% if filtro_aplicado == 'passadas' %}selected{% endif %}>Aulas Passadas</option>
+                                <option value="canceladas" {% if filtro_aplicado == 'canceladas' %}selected{% endif %}>Canceladas</option>
+                                <option value="" {% if not filtro_aplicado or filtro_aplicado == '' %}selected{% endif %}>Todas as aulas</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
         <table class="table table-striped">
             <thead>
                 <tr>

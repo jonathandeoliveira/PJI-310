@@ -63,8 +63,27 @@ def cadastrar_agenda(request):
 @login_required
 def listar_agendas(request):
     user = request.user
+    filtro = request.GET.get("filtro", "futuras")
+    hoje = timezone.localdate()
+
+    # Busca agendas relacionadas ao usuário
     agendas = Agenda.objects.filter(Q(professor=user) | Q(aluno=user))
-    return render(request, "agenda/listar_agendas.html", {"agendas": agendas})
+
+    # Aplicando filtros com base na query string
+    if filtro == "futuras":
+        agendas = agendas.filter(data__gt=hoje, cancelado=False)
+    elif filtro == "passadas":
+        agendas = agendas.filter(data__lt=hoje, cancelado=False)
+    elif filtro == "canceladas":
+        agendas = agendas.filter(cancelado=True)
+
+    agendas = agendas.order_by("data", "hora")
+
+    return render(
+        request,
+        "agenda/listar_agendas.html",
+        {"agendas": agendas, "filtro_aplicado": filtro}
+    )
 
 
 @login_required
