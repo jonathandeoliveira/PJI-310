@@ -1,6 +1,6 @@
-# Projeto Integrador II - Univesp
+# Projeto Integrador III - Univesp
 
-Este repositório contém o projeto desenvolvido para o **Projeto Integrador II** da **Univesp**. O principal objetivo deste projeto é construir uma aplicação web que integre diversas tecnologias, incluindo banco de dados, scripts web com **JavaScript**, **Nuvem**, consumo de **APIs**, **Acessibilidade**, controle de versão e **Testes**.
+Este repositório contém o projeto desenvolvido para o **Projeto Integrador III** da **Univesp**. O principal objetivo deste projeto é construir uma aplicação web que integre diversas tecnologias, incluindo banco de dados, scripts web com **JavaScript**, **Nuvem**, consumo de **APIs**, **Acessibilidade**, controle de versão, Testes e **Análise de dados**.
 
 ## 📋 Índice
 
@@ -18,21 +18,29 @@ Este projeto tem como foco a criação de uma aplicação web funcional e práti
 
 - **Criação de Modelos (Models):** Estruturação de dados utilizando o ORM do Django.
 - **Manipulação de URLs e Views:** Mapeamento e controle de rotas para diferentes partes do sistema.
-- **Autenticação de Usuários:** Implementação de mecanismos de login e gerenciamento de sessão.
+- **Autenticação de Usuários:** Login e logout seguros com controle de acesso baseado em perfil.
 - **Integração com Banco de Dados:** Uso de banco de dados para armazenamento e recuperação de informações.
-- **Renderização de Templates Dinâmicos:** Exibição de conteúdo dinâmico e interação com o usuário.
-- **Formulários e Validações:** Manipulação de dados enviados pelo usuário com tratamento e validação.
+- **Cadastro de Professores e Alunos:** Interface separada para gerenciar usuários com diferentes permissões.
+- **Agendamento de Aulas:** Professores e alunos podem agendar sessões com data, hora, valor e descrição.
+- **Cancelamento de Aulas:** Usuários podem cancelar treinos, mantendo o histórico visível.
+- **Edição Segura de Treinos:** Apenas quem criou ou participa do treino pode editá-lo.
+- **Filtros Dinâmicos com Bootstrap:** Visualização de aulas passadas, futuras, canceladas ou todas.
+- **Templates Responsivos:** Interface construída com Bootstrap 5, focada em usabilidade.
+- **Validação de Formulários:** Backend e frontend preparados para evitar erros de entrada de dados.
+- **Acessibilidade e Navegação Amigável:** Atalhos de teclado, responsividade e controle de fonte inclusos.
+- **Mensagens de Feedback:** Sistema de mensagens que informa ações como sucesso, erro e validações.
+- **Análise de dados:** Utilização da biblioteca Bokeh para implementação da Visualização de Dados para relatórios financeiros.
 
 ## 👥 Colaboradores
 
 - [Bianca Fileto](https://github.com/bifileto)
-- [Fabio Moreira](https://github.com/FabbHub)
+- [Caroline Bianca Santos Tancredi Molina](link_do_github)
+- [Eduardo Luiz De Oliveira](link_do_github)
 - [Gustavo Santos](https://github.com/Gustavo-Santos2)
 - [Jonathan De Oliveira](https://github.com/jonathandeoliveira)
 - [Marcio Sampaio](https://github.com/marciosampaioabc)
-- [Maykon Custodio](link_do_github)
-- [Otavio Augusto](link_do_github)
-- [Rafael Da Silva](link_do_github)
+- [Miguel Angelo Tancredi Molina](link_do_github)
+- [Vanderson Balieiro](https://github.com/VandersonB)
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -45,6 +53,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - **[CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)** - Estilização
 - **[JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)** - Linguagem de Programação para Interatividade
 - **[Bootstrap](https://getbootstrap.com/)** - Framework web que utiliza HTML, CSS e JavaScript para Design Responsivo
+- **[Bokeh](https://bokeh.org/)** - Biblioteca Python para visualização de dados interativa em navegadores web
 
 ## 💻 Pré-requisitos
 

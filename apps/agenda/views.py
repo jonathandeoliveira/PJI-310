@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from apps.users.models import UserProfile
 from apps.agenda.models import Agenda
 from apps.agenda.forms import AgendaForm
 from django.contrib import messages
@@ -14,8 +15,10 @@ from django.db.models.functions import ExtractMonth, ExtractYear
 from django.db.models import Sum
 
 from django.utils import timezone
+from datetime import datetime
 from datetime import timedelta
 
+from apps.notificacoes.services import enviar_email
 
 def index(request):
     return render(request, "agenda/index.html")
@@ -32,8 +35,24 @@ def cadastrar_agenda(request):
             else:
                 agenda.aluno = request.user
             agenda.save()
+
+            # Envia notificação(e-mail) ao criar um treino
+            enviar_email(
+                destinatarios=[agenda.professor.email, agenda.aluno.email],
+                assunto="Novo Treino Agendado!",
+                mensagem=(
+                    f"Olá {agenda.professor.email} e {agenda.aluno.email},\n\n"
+                    f"Um novo treino foi agendado!\n\n"
+                    f"Data: {agenda.data}\n"
+                    f"Hora: {agenda.hora}\n"
+                    f"Descrição: {agenda.descricao}\n\n"
+                    f"Abraços,\nEquipe Agenda Fácil"
+                )
+            )
+
             messages.success(request, "Agenda cadastrada com sucesso!")
             return redirect("listar_agendas")
+
         else:
             messages.error(request, "Corrija os erros do formulário.")
     else:
@@ -45,8 +64,33 @@ def cadastrar_agenda(request):
 @login_required
 def listar_agendas(request):
     user = request.user
+    filtro = request.GET.get("filtro", "futuras")
+    hoje = timezone.localdate()
+
+    # Busca agendas relacionadas ao usuário
     agendas = Agenda.objects.filter(Q(professor=user) | Q(aluno=user))
-    return render(request, "agenda/listar_agendas.html", {"agendas": agendas})
+
+    # Aplicando filtros com base na query string
+    if filtro == "futuras":
+        agendas = agendas.filter(data__gt=hoje, cancelado=False)
+    elif filtro == "passadas":
+        agendas = agendas.filter(data__lt=hoje, cancelado=False)
+    elif filtro == "canceladas":
+        agendas = agendas.filter(cancelado=True)
+    elif filtro == "finalizadas":
+        agendas = agendas.filter(data__lt=hoje, cancelado=False)
+
+    agendas = agendas.order_by("data", "hora")
+
+    return render(
+        request,
+        "agenda/listar_agendas.html",
+        {
+            "agendas": agendas,
+            "filtro_aplicado": filtro,
+            "hoje": hoje,
+        }
+    )
 
 
 @login_required
@@ -156,12 +200,12 @@ def analytics_view(request):
 
     # Consulta aos alunos do professor.
     # user = request.user
-    agendas = Agenda.objects.filter(Q(professor=professor) | Q(aluno=professor))
+    alunos_ativos = UserProfile.objects.filter(Q(is_professor=False)|Q(is_active=True))
 
     return render(
         request,
         "agenda/analytics.html",
-        {"script": script, "div": div, "agendas": agendas},
+        {"script": script, "div": div, "alunos_ativos": alunos_ativos},
     )
 
 
@@ -265,45 +309,16 @@ def cancelar_agenda(request, agenda_id):
 
     # Verifica se o usuário é o professor ou aluno associado
     if request.user != agenda.aluno and request.user != agenda.professor:
-        messages.error(request, "Você não tem permissão para cancelar este treino.")
+        messages.error(
+            request, "Você não tem permissão para cancelar este treino.")
         return redirect("listar_agendas")
 
     agora = timezone.now()
     data_treino = timezone.make_aware(
-        timezone.datetime.combine(agenda.data, agenda.hora)
+        datetime.combine(agenda.data, agenda.hora)
     )
 
-    # Se for aluno, aplica regra de 24 horas
-    if request.user == agenda.aluno:
-        if data_treino - agora < timedelta(hours=24):
-            messages.error(
-                request,
-                "Você só pode cancelar treinos com pelo menos 24h de antecedência.",
-            )
-            return redirect("listar_agendas")
-    # Professor ou aluno (com 24h) pode cancelar
-    agenda.cancelado = True
-    agenda.save()
-    messages.success(request, "Treino cancelado com sucesso.")
-
-    return redirect("listar_agendas")
-
-
-@login_required
-def cancelar_agenda(request, agenda_id):
-    agenda = get_object_or_404(Agenda, id=agenda_id)
-
-    # Verifica se o usuário é o professor ou aluno associado
-    if request.user != agenda.aluno and request.user != agenda.professor:
-        messages.error(request, "Você não tem permissão para cancelar este treino.")
-        return redirect("listar_agendas")
-
-    agora = timezone.now()
-    data_treino = timezone.make_aware(
-        timezone.datetime.combine(agenda.data, agenda.hora)
-    )
-
-    # Se for aluno, aplica regra de 24 horas
+    # Se for aluno, aplica a regra de 24 horas
     if request.user == agenda.aluno:
         if data_treino - agora < timedelta(hours=24):
             messages.error(
@@ -315,6 +330,18 @@ def cancelar_agenda(request, agenda_id):
     # Professor ou aluno (com 24h) pode cancelar
     agenda.cancelado = True
     agenda.save()
-    messages.success(request, "Treino cancelado com sucesso.")
 
+    # Envia notificação (e-mail) ao cancelar um treino
+    enviar_email(
+        destinatarios=[agenda.professor.email, agenda.aluno.email],
+        assunto="Treino Cancelado",
+        mensagem=(
+            f"Olá {agenda.professor.email} e {agenda.aluno.email},\n\n"
+            f"O treino marcado para {agenda.data} às {agenda.hora} foi cancelado.\n\n"
+            f"Qualquer dúvida, entre em contato.\n"
+            f"Equipe Agenda Fácil"
+        )
+    )
+
+    messages.success(request, "Treino cancelado com sucesso.")
     return redirect("listar_agendas")
