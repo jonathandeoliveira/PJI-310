@@ -175,4 +175,3 @@ cython_debug/
 proximos_passos.txt
 start.txt
 db.sqlite3
-.venv/

@@ -13,9 +13,28 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <p>Usuário atual: {{ user.username }}</p>
+        <p>Usuário atual: {{ user.email }}</p>
         <a href="{% url 'index' %}" class="btn btn-secondary">Home</a>
         <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
+
+            <div class="text-center">
+                <form method="get" class="mb-4">
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col-auto">
+                            <label for="filtro" class="col-form-label fw-bold">Filtrar por:</label>
+                        </div>
+                        <div class="col-auto">
+                            <label for="filtro" class="form-label me-2 fw-semibold">Filtrar por:</label>
+                            <select name="filtro" id="filtro" class="form-select" onchange="this.form.submit()">
+                                <option value="futuras" {% if filtro_aplicado == 'futuras' %}selected{% endif %}>Aulas Futuras</option>
+                                <option value="finalizadas" {% if filtro_aplicado == 'finalizadas' %}selected{% endif %}>Finalizadas</option>
+                                <option value="canceladas" {% if filtro_aplicado == 'canceladas' %}selected{% endif %}>Canceladas</option>
+                                <option value="" {% if not filtro_aplicado or filtro_aplicado == '' %}selected{% endif %}>Todas as Aulas</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
         <table class="table table-striped">
             <thead>
@@ -44,10 +63,12 @@
                         <td>
                             {% if agenda.cancelado %}
                                 <span class="badge bg-danger">❌ Treino Cancelado</span>
+                            {% elif agenda.data < hoje %}
+                                <span class="badge bg-success">✅ Treino Finalizado</span>
                             {% else %}
-                                <a href="{% url 'editar_agenda' agenda.id %}"class="btn btn-primary btn-sm me-1">Editar</a>
-                                <a href="{% url 'cancelar_agenda' agenda.id %}"class="btn btn-warning btn-sm me-1"onclick="return confirm('Tem certeza que deseja cancelar este treino?')">Cancelar</a>
-                                <a href="{% url 'deletar_agenda' agenda.id %}" class="btn btn-danger btn-sm">Deletar</a>
+                                <a href="{% url 'editar_agenda' agenda.id %}" class="btn btn-primary btn-sm me-1">Editar</a>
+                                <a href="{% url 'cancelar_agenda' agenda.id %}" class="btn btn-warning btn-sm me-1"
+                                onclick="return confirm('Tem certeza que deseja cancelar este treino?')">Cancelar</a>
                             {% endif %}
                         </td>
                     </tr>
