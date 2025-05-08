@@ -40,6 +40,8 @@ class UserProfile(AbstractUser):
     document = models.CharField(
         max_length=14, validators=[document_validator], unique=True
     )
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=55)
     postal_code = models.CharField(max_length=12, validators=[postal_code_validator])
     phone = models.CharField(max_length=14, validators=[phone_validator])
     birth_date = models.DateField()

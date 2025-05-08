@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from apps.users.models import UserProfile
 from apps.agenda.models import Agenda
 from apps.agenda.forms import AgendaForm
 from django.contrib import messages
@@ -199,12 +200,12 @@ def analytics_view(request):
 
     # Consulta aos alunos do professor.
     # user = request.user
-    agendas = Agenda.objects.filter(Q(professor=professor) | Q(aluno=professor))
+    alunos_ativos = UserProfile.objects.filter(Q(is_professor=False)|Q(is_active=True))
 
     return render(
         request,
         "agenda/analytics.html",
-        {"script": script, "div": div, "agendas": agendas},
+        {"script": script, "div": div, "alunos_ativos": alunos_ativos},
     )
 
 

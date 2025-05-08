@@ -15,7 +15,7 @@ cursor = conn.cursor()
 # Define os cabeçalhos do CSV manualmente
 fieldnames = [
     'id', 'valor', 'data', 'hora', 'descricao',
-    'created_at', 'aluno_id','professor_id'
+    'created_at', 'aluno_id','professor_id','cancelado'
     ]
 
 # Lê o arquivo CSV e insere os dados
@@ -33,8 +33,8 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
             cursor.execute('''
                 INSERT INTO agenda_agenda (
                     id, valor, data, hora, descricao,
-                    created_at, aluno_id,professor_id
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    created_at, aluno_id,professor_id,cancelado
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)
             ''', (
                 row['id'],
                 row['valor'],
@@ -44,7 +44,7 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
                 row['created_at'],
                 row['aluno_id'],
                 row['professor_id'],
-                
+                row['cancelado'],
             ))
         except Exception as e:
             print(f"Erro ao inserir o usuário: {e}")

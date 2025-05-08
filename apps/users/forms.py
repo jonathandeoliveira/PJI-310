@@ -16,6 +16,8 @@ class UserProfileCreationForm(UserCreationForm):
         model = UserProfile
         fields = [
             "email",
+            "first_name",
+            "last_name",
             "document",
             "postal_code",
             "phone",
@@ -27,6 +29,18 @@ class UserProfileCreationForm(UserCreationForm):
         widgets = {
             "email": forms.EmailInput(
                 attrs={"placeholder": "Joaosilva@exemplo.com", "class": "form-control"}
+            ),
+            "first_name": forms.TextInput(
+                attrs={
+                    "placeholder": "Nome",
+                    "class": "form-control",
+                }
+            ),
+            "last_name": forms.TextInput(
+                attrs={
+                    "placeholder": "Sobrenome",
+                    "class": "form-control",
+                }
             ),
             "document": forms.TextInput(
                 attrs={
@@ -60,6 +74,8 @@ class UserProfileCreationForm(UserCreationForm):
 
         labels = {
             "username": "Nome de Usuário",
+            "first_name":"Nome",
+            "last_name":"Sobrenome",
             "email": "E-mail",
             "document": "CPF",
             "postal_code": "CEP",
