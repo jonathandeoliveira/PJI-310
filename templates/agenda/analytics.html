@@ -17,23 +17,25 @@
 
     <div class="container mt-5">
         <h2>Lista de alunos ativos</h2>
-        <a href="#" class="btn btn-success">Mais detalhes</a>
+        <!--<a href="#" class="btn btn-success">Mais detalhes</a>-->
 
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Aluno</th>
-                    <th>Valor(R$)</th>
-                    <th>Criado em</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Telefone</th>
+                    <th>Data de Início</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                {% for agenda in agendas %}
+                {% for aluno in alunos_ativos %}
                  <tr class>
-                     <td>{{ agenda.aluno }}</td>
-                     <td>{{ agenda.valor }}</td>
-                     <td>{{ agenda.created_at }}</td>
+                     <td>{{ aluno.first_name }}</td>
+                     <td>{{ aluno.last_name }}</td>
+                     <td>{{ aluno.phone }}</td>
+                     <td>{{ aluno.date_joined|date:"d/m/Y"}}</td>
                      <td>
                          <a href="#" class="btn btn-primary btn-sm">Ativo</a>
                          <a href="#" class="btn btn-danger btn-sm">Inativo</a>
