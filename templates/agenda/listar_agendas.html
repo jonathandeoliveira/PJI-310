@@ -14,8 +14,9 @@
             </div>
         {% endif %}
         <p>Usuário atual: {{ user.username }}</p>
-        <a href="{% url 'index' %}" class="btn btn-secondary">Home</a>
-        <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
+        <a href="{% url 'index' %}" class="button">Home</a>
+        <a href="{% url 'cadastrar_agenda' %}" class="button">Agendar Nova Aula</a>
+        <button class ="button" onclick="history.back()">Voltar</button>
 
         <table class="table table-striped">
             <thead>

@@ -38,25 +38,25 @@
         <nav>
             {% block content %}
                 {% if user.is_authenticated %}
-                    <p id='logado'>Bem-vindo, {{ user.username }}  </p>
+                    <h3 id='logado'>Bem-vindo, {{ user.username }}  </h3>
                     <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
                     <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
                     <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
                 {% else %}
                     <article class="mt-4">
-                        <p> Olá Visitante <a class="dropdown" href="{% url 'register' %}">Entre</a> para ter acesso a mais conteúdos. </p>
+                        <h3> Olá Visitante <a class="dropdown" href="{% url 'register' %}">Entre</a> para ter acesso a mais conteúdos. </h3>
                     </article>
                 {% endif %}
             {% endblock content %}
         </nav>
     </main>
-    <footer class="footer">
-        <a href="https://www.instagram.com/luana.albino/" target="_blank"><img class="footer-img" src="https://i.imgur.com/XjchrUQ.png" alt="logo do instagram"></a>
-    </footer>
 
     <!-- Adiciona o script do Bokeh após o conteúdo -->
     {% block extra_scripts %}
         {{ script|safe }}
     {% endblock %}
 </body>
+<footer class="footer">
+        <a href="https://www.instagram.com/luana.albino/" target="_blank"><img class="footer-img" src="https://i.imgur.com/XjchrUQ.png" alt="logo do instagram"></a>
+</footer>
 </html>

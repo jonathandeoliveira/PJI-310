@@ -3,22 +3,26 @@
 {% block title %}Visualização Geral{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h2 class="mb-4">Visualização Geral</h2>
-        <h1 class="h1">Rendimento dos últimos 3 meses</h1>
+    <div>
+        <h1>Visualização Geral</h1>
+        <h2>Rendimento dos últimos 3 meses</h2>
         
         <!-- Aqui será exibido o gráfico -->
         {{ script|safe }}
         {{ div|safe }}
 
-        <a href="{% url 'analytics_finance' %}" class="btn btn-success">Relatório Detalhado</a>
-         <!-- listar os rendimentos dos últimos 3 meses e listar alunos ativos-->
+        <nav class="button-margin">
+            <a href="{% url 'analytics_finance' %}" class="button">Relatório Detalhado</a>
+            <!-- listar os rendimentos dos últimos 3 meses e listar alunos ativos-->
+            <button class ="button" onclick="history.back()">Voltar</button>
+        </nav>
     </div>
 
-    <div class="container mt-5">
+    <div>
         <h2>Lista de alunos ativos</h2>
-        <a href="#" class="btn btn-success">Mais detalhes</a>
-
+        <nav class="button-margin">
+            <a href="#" class="button">Mais detalhes</a>
+        </nav>
         <table class="table table-striped">
             <thead>
                 <tr>

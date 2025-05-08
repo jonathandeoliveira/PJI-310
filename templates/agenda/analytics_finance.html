@@ -4,15 +4,15 @@
 
 {% block content %}
     <div class="container mt-5">
-        <h2 class="mb-4">Histórico Financeiro</h2>
-        <h1 class="h1">Rendimento do período</h1>
+        <h1>Histórico Financeiro</h1>
+        <h2>Rendimento do período</h2>
         
         <!-- Aqui será exibido o gráfico -->
         {{ script|safe }}
         {{ div|safe }}
 
         <form method="get" class="mb-4">
-            <label for="periodo">Selecione o período:</label>
+            <label for="periodo" class="resultado-grafico">Selecione o período:</label>
             <select name="periodo" id="periodo" onchange="this.form.submit()" class="form-select w-auto d-inline mx-2">
                 <option value="3" {% if periodo == 3 %}selected{% endif %}>3 meses</option>
                 <option value="6" {% if periodo == 6 %}selected{% endif %}>6 meses</option>
@@ -21,10 +21,20 @@
             </select>
         </form>
 
-        <h3>Rendimento total no período: R$ {{ valor_total|floatformat:2 }}</h3>
-        <h3>Rendimento médio no período: R$ {{ valor_medio|floatformat:2 }}</h3>
-        <a href="{% url 'analytics' %}"  class="btn btn-success">Voltar a Visualização Geral</a>
-         <!-- listar os rendimentos dos últimos 3 meses e listar alunos ativos-->
+        <article class="resultado-grafico">
+            <div>
+                <div class="rendimento">Rendimento total no período: </div>
+                R$ {{ valor_total|floatformat:2 }}
+            </div>
+            <div>
+                <div class="rendimento">Rendimento médio no período: </div>
+                R$ {{ valor_medio|floatformat:2 }}
+            </div>
+        </article>
+        <nav class="button-margin">
+            <a href="{% url 'analytics' %}"  class="button">Voltar a Visualização Geral</a>
+            <!-- listar os rendimentos dos últimos 3 meses e listar alunos ativos-->
+        </nav>
     </div>
 
     

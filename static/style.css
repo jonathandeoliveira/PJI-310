@@ -22,7 +22,6 @@ body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-
 }
 
 main{
@@ -72,12 +71,46 @@ main{
      margin-top: 10px;
      margin-left:10px;
      outline: 0;
+     font-size:18px;
      background: #1E8ACB;
      color: #fff;
      padding: 8px;
      border-radius: 9px;
      text-decoration: none;
      border:none
+}
+
+.green-button{
+     margin-bottom: 10px;
+     margin-top: 10px;
+     margin-left:10px;
+     outline: 0;
+     font-size:18px;
+     background: #339933;
+     color: #fff;
+     padding: 8px;
+     border-radius: 9px;
+     text-decoration: none;
+     border:none
+}
+
+.red-button{
+     margin-bottom: 10px;
+     margin-top: 10px;
+     margin-left:10px;
+     outline: 0;
+     font-size:18px;
+     background: #cc0000;
+     color: #fff;
+     padding: 8px;
+     border-radius: 9px;
+     text-decoration: none;
+     border:none
+}
+
+.button-margin{
+    margin-top:20px;
+    margin-bottom:20px;
 }
 
 .formulario{
@@ -96,6 +129,24 @@ main{
      font-family: Muli,sans-serif;
      }
 
+.resultado-grafico{
+    color: #106E82;
+    background-color: transparent;
+    font-family: Muli,sans-serif;
+    font-size: 120%;
+    letter-spacing: 0;
+    text-align: left;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    letter-spacing: .3px;
+}
+
+.rendimento{
+    font-weight:bold;
+}
+
 h1{
     display: block;
     margin-top:20px;
@@ -104,21 +155,51 @@ h1{
     padding-bottom: 10px;
     font-family: Muli,sans-serif;
     letter-spacing: 0;
-    font-weight: 700;
+    font-weight: bold;
 }
 
-p{
+h2{
+    display: block;
+    margin:10px;
+    text-align: left;
+    color: #106E82;
+    padding: 10px;
+    font-family: Muli,sans-serif;
+    letter-spacing: 0;
+    font-weight: bold;
+}
+
+h3{
     color: #1E8ACB;
     background-color: #E7F1FE;
+    font-size:18px;
     font-family: Muli,sans-serif;
     letter-spacing: 0;
     text-align: center;
+    padding:5px;
     margin-left: 18px;
     margin-right: 18px;
     margin-top: 20px;
     margin-bottom: 20px;
     letter-spacing: .3px;
-    line-height: 32px;
+    line-height: 35px;
+}
+
+p{
+    color: #1E8ACB;
+    background-color: transparent;
+    font-family: Muli,sans-serif;
+    font-weight:bold;
+    font-size:18px;
+    letter-spacing: 0;
+    text-align: left;
+    padding:5px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    letter-spacing: .3px;
+    line-height: 35px;
 }
 
 
