@@ -6,7 +6,7 @@ from datetime import datetime
 db_path = 'db.sqlite3'
 
 # Caminho para o arquivo CSV
-csv_path = '/home/vanderson/djangoPI/PJI-310/PJI-310/banco_users.txt'
+csv_path = 'banco_users.txt'
 
 # Conexão com o banco de dados
 conn = sqlite3.connect(db_path)
@@ -14,7 +14,7 @@ cursor = conn.cursor()
 
 # Define os cabeçalhos do CSV manualmente
 fieldnames = [
-    'id', 'password', 'last_login', 'is_superuser', 'first_name', 'last_name',
+    'password', 'last_login', 'is_superuser', 'first_name', 'last_name',
     'is_staff', 'is_active', 'date_joined', 'document', 'postal_code', 'phone',
     'birth_date', 'full_address', 'email', 'is_professor'
 ]
@@ -33,12 +33,11 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
             
             cursor.execute('''
                 INSERT INTO users_userprofile (
-                    id, password, last_login, is_superuser, first_name, last_name, 
+                    password, last_login, is_superuser, first_name, last_name, 
                     is_staff, is_active, date_joined, document, postal_code, phone, 
                     birth_date, full_address, email, is_professor
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
-                row['id'],
                 row['password'],
                 row['last_login'] if row['last_login'] else None,
                 int(row['is_superuser']),
@@ -61,3 +60,4 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
 # Salva as alterações e fecha a conexão
 conn.commit()
 conn.close()
+print()"Importação concluída com sucesso!")

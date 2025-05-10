@@ -6,7 +6,7 @@ from datetime import datetime
 db_path = 'db.sqlite3'
 
 # Caminho para o arquivo CSV
-csv_path = '/home/vanderson/djangoPI/PJI-310/PJI-310/banco_agenda_agenda.txt'
+csv_path = 'banco_agenda_agenda.txt'
 
 # Conexão com o banco de dados
 conn = sqlite3.connect(db_path)
@@ -14,7 +14,7 @@ cursor = conn.cursor()
 
 # Define os cabeçalhos do CSV manualmente
 fieldnames = [
-    'id', 'valor', 'data', 'hora', 'descricao',
+    'valor', 'data', 'hora', 'descricao',
     'created_at', 'aluno_id','professor_id','cancelado'
     ]
 
@@ -32,11 +32,10 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
             
             cursor.execute('''
                 INSERT INTO agenda_agenda (
-                    id, valor, data, hora, descricao,
+                    valor, data, hora, descricao,
                     created_at, aluno_id,professor_id,cancelado
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?,?)
             ''', (
-                row['id'],
                 row['valor'],
                 row['data'],
                 row['hora'],
@@ -52,3 +51,4 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
 # Salva as alterações e fecha a conexão
 conn.commit()
 conn.close()
+print("Importação concluída com sucesso!")

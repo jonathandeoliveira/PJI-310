@@ -1,240 +1,240 @@
-id,valor,data,hora,descricao,created_at,aluno_id,professor_id,cancelado
-1,50,2025-04-30,19:00:00,"Treino A:
+valor,data,hora,descricao,created_at,aluno_id,professor_id,cancelado
+50,2025-04-30,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-04-20 13:53:09.849877,3,11,0
-2,50,2025-04-15,18:00:00,"Treino B:
+50,2025-04-15,18:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2025-04-10 13:53:09.849877,3,11,0
-3,50,2025-04-20,20:00:00,"Treino C:
+50,2025-04-20,20:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2025-04-15 13:53:09.849877,3,11,0
-4,45,2025-04-10,19:00:00,"Treino A:
+45,2025-04-10,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-04-05 13:53:09.849877,3,12,0
-5,45,2025-04-05,19:00:00,"Treino D:
+45,2025-04-05,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2025-04-01 13:53:09.849877,3,12,0
-1,45,2025-04-01,15:00:00,"Treino B:
+45,2025-04-01,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2025-03-20 13:53:09.849877,3,12,0
-6,40,2025-03-25,19:00:00,"Treino D:
+40,2025-03-25,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2025-03-20 13:53:09.849877,3,12,0
-7,40,2025-03-22,19:00:00,"Treino A:
+40,2025-03-22,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-03-20 13:53:09.849877,3,12,0
-8,40,2025-03-21,19:00:00,"Treino B:
+40,2025-03-21,19:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2025-03-20 13:53:09.849877,3,12,0
-9,40,2025-03-18,19:00:00,"Treino C:
+40,2025-03-18,19:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2025-03-10 13:53:09.849877,3,12,0
-10,40,2025-03-18,17:00:00,"Treino A:
+40,2025-03-18,17:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-03-10 13:53:09.849877,5,12,0
-11,40,2025-04-18,15:00:00,"Treino B:
+40,2025-04-18,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2025-03-10 13:53:09.849877,7,12,0
-12,35,2025-03-30,19:00:00,"Treino A:
+35,2025-03-30,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-04-20 13:53:09.849877,7,12,0
-13,35,2025-04-30,19:00:00,"Treino A:
+35,2025-04-30,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-04-20 13:53:09.849877,9,11,0
-14,40,2025-04-25,19:00:00,"Treino D:
+40,2025-04-25,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2025-04-20 13:53:09.849877,6,12,0
-15,38,2025-04-25,20:00:00,"Treino A:
+38,2025-04-25,20:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-04-20 13:53:09.849877,8,12,0
-16,50,2025-02-20,19:00:00,"Treino A:
+50,2025-02-20,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-02-05 13:53:09.849877,3,11,0
-17,50,2025-02-15,18:00:00,"Treino B:
+50,2025-02-15,18:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2025-02-10 13:53:09.849877,3,11,0
-18,50,2025-02-20,20:00:00,"Treino C:
+50,2025-02-20,20:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2025-02-15 13:53:09.849877,3,11,1
-19,45,2025-02-10,19:00:00,"Treino A:
+45,2025-02-10,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-02-05 13:53:09.849877,3,12,0
-20,45,2025-02-05,19:00:00,"Treino D:
+45,2025-02-05,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2025-02-01 13:53:09.849877,3,12,0
-21,45,2025-02-01,15:00:00,"Treino B:
+45,2025-02-01,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2025-01-20 13:53:09.849877,3,12,1
-22,40,2025-01-25,19:00:00,"Treino D:
+40,2025-01-25,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2025-01-20 13:53:09.849877,3,12,0
-23,40,2025-01-22,19:00:00,"Treino A:
+2025-01-22,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-01-20 13:53:09.849877,3,12,0
-24,40,2025-01-18,19:00:00,"Treino B:
+40,2025-01-18,19:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2025-01-15 13:53:09.849877,3,12,0
-25,40,2025-01-18,19:00:00,"Treino C:
+40,2025-01-18,19:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2025-01-10 13:53:09.849877,3,12,0
-26,40,2025-01-18,17:00:00,"Treino A:
+40,2025-01-18,17:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2025-01-10 13:53:09.849877,5,12,1
-27,40,2024-12-18,15:00:00,"Treino B:
+40,2024-12-18,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-12-10 13:53:09.849877,7,12,0
-28,35,2024-12-30,19:00:00,"Treino A:
+35,2024-12-30,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-12-20 13:53:09.849877,7,12,1
-29,35,2024-12-30,19:00:00,"Treino A:
+35,2024-12-30,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-12-20 13:53:09.849877,9,11,1
-30,40,2024-12-20,19:00:00,"Treino D:
+40,2024-12-20,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2024-12-10 13:53:09.849877,6,12,0
-31,38,2024-12-22,20:00:00,"Treino A:
+38,2024-12-22,20:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-12-20 13:53:09.849877,8,12,0
-32,50,2024-12-10,19:00:00,"Treino A:
+50,2024-12-10,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-12-08 13:53:09.849877,6,11,0
-33,50,2024-12-15,18:00:00,"Treino B:
+50,2024-12-15,18:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-12-10 13:53:09.849877,3,11,0
-34,50,2024-12-12,20:00:00,"Treino C:
+50,2024-12-12,20:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2024-12-10 13:53:09.849877,4,11,0
-35,45,2024-12-10,19:00:00,"Treino A:
+45,2024-12-10,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-12-05 13:53:09.849877,3,12,0
-36,45,2024-12-05,19:00:00,"Treino D:
+45,2024-12-05,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2024-12-01 13:53:09.849877,9,12,0
-37,45,2024-12-01,15:00:00,"Treino B:
+45,2024-12-01,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-11-25 13:53:09.849877,3,12,0
-38,40,2024-11-25,19:00:00,"Treino D:
+40,2024-11-25,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
@@ -247,149 +247,149 @@ Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-11-10 13:53:09.849877,3,12,0
-40,40,2024-11-15,19:00:00,"Treino B:
+40,2024-11-15,19:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-11-10 13:53:09.849877,3,12,0
-41,40,2025-11-10,19:00:00,"Treino C:
+40,2025-11-10,19:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2024-11-05 13:53:09.849877,3,12,0
-42,40,2024-11-08,17:00:00,"Treino A:
+40,2024-11-08,17:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-11-05 13:53:09.849877,5,12,0
-43,40,2024-11-05,15:00:00,"Treino B:
+40,2024-11-05,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-10-27 13:53:09.849877,7,12,0
-44,35,2024-10-30,19:00:00,"Treino A:
+35,2024-10-30,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-10-20 13:53:09.849877,7,12,0
-45,35,2024-10-30,19:00:00,"Treino A:
+35,2024-10-30,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-10-20 13:53:09.849877,9,11,0
-46,40,2024-10-25,19:00:00,"Treino D:
+40,2024-10-25,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2024-10-20 13:53:09.849877,6,12,0
-47,38,2024-10-25,20:00:00,"Treino A:
+38,2024-10-25,20:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-10-20 13:53:09.849877,8,12,0
-48,50,2024-10-15,19:00:00,"Treino A:
+50,2024-10-15,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-10-05 13:53:09.849877,3,11,0
-49,50,2024-10-11,18:00:00,"Treino B:
+50,2024-10-11,18:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-10-08 13:53:09.849877,3,11,0
-50,50,2024-10-05,20:00:00,"Treino C:
+50,2024-10-05,20:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2024-10-01 13:53:09.849877,3,11,1
-51,45,2024-10-01,19:00:00,"Treino A:
+45,2024-10-01,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-09-25 13:53:09.849877,3,12,0
-52,45,2024-09-25,19:00:00,"Treino D:
+45,2024-09-25,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2024-09-20 13:53:09.849877,3,12,0
-53,45,2024-09-20,15:00:00,"Treino B:
+45,2024-09-20,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-09-15 13:53:09.849877,3,12,1
-54,40,2025-09-20,19:00:00,"Treino D:
+40,2025-09-20,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2024-09-15 13:53:09.849877,3,12,0
-55,40,2024-09-15,19:00:00,"Treino A:
+40,2024-09-15,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-09-10 13:53:09.849877,3,12,0
-56,40,2024-09-10,19:00:00,"Treino B:
+40,2024-09-10,19:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-09-05 13:53:09.849877,3,12,0
-57,40,2024-08-29,19:00:00,"Treino C:
+40,2024-08-29,19:00:00,"Treino C:
 Triceps corda - 3x15 (20kg)
 Triceps Francesa - 3x15 (18kg)
 Triceps Barra invertida - 3x15 (15kg)
 Remada Maquina - 3x15 (30kg)
 Remada alternada - 3x15 (25kg)",2024-08-10 13:53:09.849877,3,12,0
-58,40,2024-08-18,17:00:00,"Treino A:
+40,2024-08-18,17:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-08-10 13:53:09.849877,5,12,1
-59,40,2024-08-18,15:00:00,"Treino B:
+40,2024-08-18,15:00:00,"Treino B:
 Rosca reta - 3x15 (15kg)
 Rosca Martelo - 3x15 (20kg)
 Rosca Scotch - 3x15 (18kg)
 Crucifixo Invertido - 3x15 (25kg)
 Esteira - 20min",2024-08-10 13:53:09.849877,7,12,0
-60,35,2024-08-15,19:00:00,"Treino A:
+35,2024-08-15,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-08-10 13:53:09.849877,7,12,1
-61,35,2024-08-10,19:00:00,"Treino A:
+35,2024-08-10,19:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
 Supino Inclinado - 3x15 (25kg)
 Crucifixo - 3x15 (25kg)",2024-08-08 13:53:09.849877,9,11,1
-62,40,2024-08-05,19:00:00,"Treino D:
+40,2024-08-05,19:00:00,"Treino D:
 Mesa flexora - 3x15 (50kg)
 Agachamento Sumo - 3x15 (40kg)
 Agachamento Stiff - 3x15 (30kg)
 Cadeira Extensora - 3x15 (55kg)
 Cadeira adutora - 3x15 (45kg)
 Cadeira Abdutora - 3x15 (45kg)",2024-08-01 13:53:09.849877,6,12,0
-63,38,2024-07-29,20:00:00,"Treino A:
+38,2024-07-29,20:00:00,"Treino A:
 Supino reto - 3x15 (20kg)
 Peck Deck - 3x15 (25kg)
 Elevação Lateral - 3x15 (10kg)
