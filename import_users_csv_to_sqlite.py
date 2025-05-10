@@ -60,4 +60,4 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
 # Salva as alterações e fecha a conexão
 conn.commit()
 conn.close()
-print()"Importação concluída com sucesso!")
+print("Importação concluída com sucesso!")

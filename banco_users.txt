@@ -12,5 +12,5 @@ password,,0,Elon, Musk,0,1,2025-01-20,96325874105,09087456,11931346598,1980-09-0
 password,,0,Marina,Silva,0,1,2025-01-20,96325874104,09087456,11931346598,1980-09-06,rua dos alunos1 456,Marina@professor.com.br,1
 password,,0,Cristiano,Ronaldo,0,1,2025-01-20,96325874101,09087456,11931346598,1980-09-06,rua dos alunos1 456,Cristiano@professor.com.br,1
 password,,0,Leonel,Messi,0,1,2025-01-20,96325874102,09087456,11931346598,1980-09-06,rua dos alunos1 456,Leonel@professor.com.br,1
-password,,0,Professor,TesteSilvaSauro,0,1,2025-01-20,96325874102,09087456,11931346598,1980-09-06,rua dos alunos1 456,professor@teste.com.br,1
-password,,0,Aluno,TesteSilvaSauro,0,1,2025-01-20,96325874102,09087456,11931346598,1980-09-06,rua dos alunos1 456,aluno@teste.com.br,0
+password,,0,Professor,TesteSilvaSauro,0,1,2025-01-20,96325874132,09087456,11931346598,1980-09-06,rua dos alunos1 456,professor@teste.com.br,1
+password,,0,Aluno,TesteSilvaSauro,0,1,2025-01-20,96325874144,09087456,11931346598,1980-09-06,rua dos alunos1 456,aluno@teste.com.br,0
