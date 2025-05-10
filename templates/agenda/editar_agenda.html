@@ -9,9 +9,8 @@
             <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Atualizar</button>
+            <button type="submit" class="green-button">Atualizar</button>
             <button class ="button" onclick="history.back()">Voltar</button>
-            <a href="{% url 'listar_agendas' %}" class="btn btn-secondary">Cancelar</a>
         </form>
         </div>
     {% endblock content %}

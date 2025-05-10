@@ -7,7 +7,7 @@
     <h1>Sistema de Agendamento de Treinos</h1>
 
     {% if user.is_authenticated %}
-        <p>Bem-vindo, {{ user.email }}!</p>
+        <h3>Bem-vindo, {{ user.email }}!</h3>
         <nav class="menu mb-3">
             <a href="{% url 'listar_agendas' %}" class="btn btn-primary">Ver Agenda</a>
             <a href="{% url 'cadastrar_agenda' %}" class="btn btn-success">Agendar Nova Aula</a>
@@ -18,11 +18,11 @@
             <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
         </nav>
     {% else %}
-        <p>Olá, visitante! <a href="{% url 'login' %}">Entre</a> para ter acesso a mais conteúdos.</p>
-        <p>Ou clique em <a href="{% url 'register' %}">Cadastrar-se</a> para criar uma conta.</p>
+        <h3>Olá, visitante! <a href="{% url 'login' %}">Entre</a> para ter acesso a mais conteúdos.</h3>
+        <h3>Ou clique em <a href="{% url 'register' %}">Cadastrar-se</a> para criar uma conta.</h3>
     {% endif %}
 
-    <p>Este sistema permite o gerenciamento de treinos entre professores e alunos.</p>
+    <h3>Este sistema permite o gerenciamento de treinos entre professores e alunos.</h3>
 
     <!-- Botão de conselho -->
     <div class="text-center mt-5">
